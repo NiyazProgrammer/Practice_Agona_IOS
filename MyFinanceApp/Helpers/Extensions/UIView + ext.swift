@@ -1,8 +1,11 @@
-//
-//  UIView + ext.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 05.03.2024.
-//
+import UIKit
 
-import Foundation
+extension UIView {
+    func addBottomBorder(with color: UIColor, height: CGFloat) {
+        let separator = UIView()
+        separator.backgroundColor = color
+        separator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        separator.frame = CGRect(x: 0, y: frame.height - height, width: frame.width, height: height)
+        addSubview(separator)
+    }
+}

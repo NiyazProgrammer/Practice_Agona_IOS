@@ -1,5 +1,8 @@
 import UIKit
 
+protocol ProfileViewDelegate: AnyObject {
+    func didPressCard(cardId: Int)
+}
 class ProfileView: UIView {
     
     lazy var backgraoundImageProfile: UIImageView = {
@@ -93,6 +96,8 @@ class ProfileView: UIView {
         table.register(GeneralProfileTableViewCell.self, forCellReuseIdentifier: GeneralProfileTableViewCell.reuseIdentifier)
         return table
     }()
+
+    weak var delegate: ProfileViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -203,6 +208,6 @@ extension ProfileView: UITableViewDataSource {
 }
 extension ProfileView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        delegate?.didPressCard(cardId: indexPath.row)
     }
 }

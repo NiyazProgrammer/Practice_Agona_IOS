@@ -7,19 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		628FFAFD2B96476E00AC51CF /* GeneralProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */; };
+		628FFB2D2B97383900AC51CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB2C2B97383900AC51CF /* TabBarController.swift */; };
+		628FFB312B97399100AC51CF /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB302B97399100AC51CF /* UIColor + ext.swift */; };
+		628FFB332B9739DE00AC51CF /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB322B9739DE00AC51CF /* Resources.swift */; };
+		628FFB352B97430F00AC51CF /* NavBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB342B97430F00AC51CF /* NavBarController.swift */; };
+		628FFB382B97477600AC51CF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB372B97477600AC51CF /* BaseViewController.swift */; };
+		628FFB3A2B9748F700AC51CF /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB392B9748F700AC51CF /* UIView + ext.swift */; };
+		628FFB3E2B97998500AC51CF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB3D2B97998500AC51CF /* SettingViewController.swift */; };
+		628FFB402B97999400AC51CF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB3F2B97999400AC51CF /* SettingView.swift */; };
+		628FFB422B9799AA00AC51CF /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB412B9799AA00AC51CF /* SettingViewModel.swift */; };
+		628FFB482B97A18700AC51CF /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB472B97A18700AC51CF /* NotificationViewController.swift */; };
+		628FFB4A2B97A1A200AC51CF /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB492B97A1A200AC51CF /* FavoritesViewController.swift */; };
+		628FFB4C2B97A1B800AC51CF /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB4B2B97A1B800AC51CF /* FavoritesView.swift */; };
+		628FFB4E2B97A1C900AC51CF /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB4D2B97A1C900AC51CF /* NotificationView.swift */; };
+		628FFB502B97A1DC00AC51CF /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */; };
+		628FFB532B97A22F00AC51CF /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */; };
+		62A391392B95CD18005C9CCB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A391382B95CD18005C9CCB /* ProfileView.swift */; };
+		62A3913C2B95CD44005C9CCB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */; };
+		62A391402B95CD7C005C9CCB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A3913F2B95CD7C005C9CCB /* Model.swift */; };
 		62A4D9D12B8B365500609449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A4D9D02B8B365500609449 /* AppDelegate.swift */; };
 		62A4D9D32B8B365500609449 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A4D9D22B8B365500609449 /* SceneDelegate.swift */; };
-		62A4D9D52B8B365500609449 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A4D9D42B8B365500609449 /* ViewController.swift */; };
+		62A4D9D52B8B365500609449 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A4D9D42B8B365500609449 /* ProfileViewController.swift */; };
 		62A4D9DB2B8B365500609449 /* MyFinanceApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62A4D9D92B8B365500609449 /* MyFinanceApp.xcdatamodeld */; };
 		62A4D9DD2B8B365700609449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A4D9DC2B8B365700609449 /* Assets.xcassets */; };
 		62A4D9E02B8B365700609449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62A4D9DE2B8B365700609449 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProfileTableViewCell.swift; sourceTree = "<group>"; };
+		628FFB2C2B97383900AC51CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		628FFB302B97399100AC51CF /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
+		628FFB322B9739DE00AC51CF /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		628FFB342B97430F00AC51CF /* NavBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarController.swift; sourceTree = "<group>"; };
+		628FFB372B97477600AC51CF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		628FFB392B9748F700AC51CF /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
+		628FFB3D2B97998500AC51CF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		628FFB3F2B97999400AC51CF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		628FFB412B9799AA00AC51CF /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		628FFB472B97A18700AC51CF /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		628FFB492B97A1A200AC51CF /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		628FFB4B2B97A1B800AC51CF /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		628FFB4D2B97A1C900AC51CF /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		62A391382B95CD18005C9CCB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		62A3913F2B95CD7C005C9CCB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		62A4D9CD2B8B365500609449 /* MyFinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62A4D9D02B8B365500609449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62A4D9D22B8B365500609449 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		62A4D9D42B8B365500609449 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		62A4D9D42B8B365500609449 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62A4D9DA2B8B365500609449 /* MyFinanceApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFinanceApp.xcdatamodel; sourceTree = "<group>"; };
 		62A4D9DC2B8B365700609449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62A4D9DF2B8B365700609449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,9 +75,134 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		628FFAFE2B96477300AC51CF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		628FFB2A2B9732D900AC51CF /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				62A4D9DC2B8B365700609449 /* Assets.xcassets */,
+				62A4D9DE2B8B365700609449 /* LaunchScreen.storyboard */,
+				62A4D9E12B8B365700609449 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		628FFB2B2B97334700AC51CF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				62A4D9D02B8B365500609449 /* AppDelegate.swift */,
+				62A4D9D22B8B365500609449 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		628FFB2E2B97395800AC51CF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB2F2B97397000AC51CF /* Extensions */,
+				628FFB322B9739DE00AC51CF /* Resources.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		628FFB2F2B97397000AC51CF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB302B97399100AC51CF /* UIColor + ext.swift */,
+				628FFB392B9748F700AC51CF /* UIView + ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		628FFB362B9745C000AC51CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB2C2B97383900AC51CF /* TabBarController.swift */,
+				628FFB342B97430F00AC51CF /* NavBarController.swift */,
+				628FFB372B97477600AC51CF /* BaseViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		628FFB432B979C2500AC51CF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				62A4D9D42B8B365500609449 /* ProfileViewController.swift */,
+				62A391382B95CD18005C9CCB /* ProfileView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		628FFB442B979C2F00AC51CF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB3D2B97998500AC51CF /* SettingViewController.swift */,
+				628FFB3F2B97999400AC51CF /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		628FFB452B97A13A00AC51CF /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB472B97A18700AC51CF /* NotificationViewController.swift */,
+				628FFB4D2B97A1C900AC51CF /* NotificationView.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		628FFB462B97A14D00AC51CF /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB492B97A1A200AC51CF /* FavoritesViewController.swift */,
+				628FFB4B2B97A1B800AC51CF /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		62A3913A2B95CD1F005C9CCB /* Profile Screens */ = {
+			isa = PBXGroup;
+			children = (
+				62A3913D2B95CD57005C9CCB /* Views */,
+				62A3913E2B95CD62005C9CCB /* ViewModels */,
+				62A3913F2B95CD7C005C9CCB /* Model.swift */,
+				628FFAFE2B96477300AC51CF /* Cells */,
+			);
+			path = "Profile Screens";
+			sourceTree = "<group>";
+		};
+		62A3913D2B95CD57005C9CCB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB432B979C2500AC51CF /* Main */,
+				628FFB462B97A14D00AC51CF /* Favorites */,
+				628FFB452B97A13A00AC51CF /* Notification */,
+				628FFB442B979C2F00AC51CF /* Setting */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		62A3913E2B95CD62005C9CCB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */,
+				628FFB412B9799AA00AC51CF /* SettingViewModel.swift */,
+				628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */,
+				628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		62A4D9C42B8B365400609449 = {
 			isa = PBXGroup;
 			children = (
+				628FFB2E2B97395800AC51CF /* Helpers */,
 				62A4D9CF2B8B365500609449 /* MyFinanceApp */,
 				62A4D9CE2B8B365500609449 /* Products */,
 			);
@@ -56,13 +219,11 @@
 		62A4D9CF2B8B365500609449 /* MyFinanceApp */ = {
 			isa = PBXGroup;
 			children = (
-				62A4D9D02B8B365500609449 /* AppDelegate.swift */,
-				62A4D9D22B8B365500609449 /* SceneDelegate.swift */,
-				62A4D9D42B8B365500609449 /* ViewController.swift */,
-				62A4D9DC2B8B365700609449 /* Assets.xcassets */,
-				62A4D9DE2B8B365700609449 /* LaunchScreen.storyboard */,
-				62A4D9E12B8B365700609449 /* Info.plist */,
+				628FFB2B2B97334700AC51CF /* Application */,
+				62A3913A2B95CD1F005C9CCB /* Profile Screens */,
+				628FFB2A2B9732D900AC51CF /* SupportingFiles */,
 				62A4D9D92B8B365500609449 /* MyFinanceApp.xcdatamodeld */,
+				628FFB362B9745C000AC51CF /* Controllers */,
 			);
 			path = MyFinanceApp;
 			sourceTree = "<group>";
@@ -137,8 +298,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				628FFB4C2B97A1B800AC51CF /* FavoritesView.swift in Sources */,
+				628FFB382B97477600AC51CF /* BaseViewController.swift in Sources */,
+				628FFB4E2B97A1C900AC51CF /* NotificationView.swift in Sources */,
+				62A391402B95CD7C005C9CCB /* Model.swift in Sources */,
+				62A3913C2B95CD44005C9CCB /* ProfileViewModel.swift in Sources */,
+				628FFAFD2B96476E00AC51CF /* GeneralProfileTableViewCell.swift in Sources */,
+				628FFB312B97399100AC51CF /* UIColor + ext.swift in Sources */,
+				628FFB402B97999400AC51CF /* SettingView.swift in Sources */,
+				628FFB502B97A1DC00AC51CF /* NotificationViewModel.swift in Sources */,
+				628FFB532B97A22F00AC51CF /* FavoritesViewModel.swift in Sources */,
+				628FFB422B9799AA00AC51CF /* SettingViewModel.swift in Sources */,
+				628FFB3E2B97998500AC51CF /* SettingViewController.swift in Sources */,
+				628FFB2D2B97383900AC51CF /* TabBarController.swift in Sources */,
 				62A4D9DB2B8B365500609449 /* MyFinanceApp.xcdatamodeld in Sources */,
-				62A4D9D52B8B365500609449 /* ViewController.swift in Sources */,
+				628FFB4A2B97A1A200AC51CF /* FavoritesViewController.swift in Sources */,
+				62A4D9D52B8B365500609449 /* ProfileViewController.swift in Sources */,
+				628FFB3A2B9748F700AC51CF /* UIView + ext.swift in Sources */,
+				628FFB352B97430F00AC51CF /* NavBarController.swift in Sources */,
+				62A391392B95CD18005C9CCB /* ProfileView.swift in Sources */,
+				628FFB482B97A18700AC51CF /* NotificationViewController.swift in Sources */,
+				628FFB332B9739DE00AC51CF /* Resources.swift in Sources */,
 				62A4D9D12B8B365500609449 /* AppDelegate.swift in Sources */,
 				62A4D9D32B8B365500609449 /* SceneDelegate.swift in Sources */,
 			);
@@ -286,7 +466,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HM82ZPV389;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyFinanceApp/Info.plist;
+				INFOPLIST_FILE = MyFinanceApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -313,7 +493,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HM82ZPV389;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyFinanceApp/Info.plist;
+				INFOPLIST_FILE = MyFinanceApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -1,10 +1,3 @@
-//
-//  TabBarController.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 05.03.2024.
-//
-
 import UIKit
 
 enum Tabs: Int {
@@ -33,15 +26,17 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = Resources.Colors.active
         tabBar.barTintColor = Resources.Colors.inactive
 
-        tabBar.layer.borderColor = Resources.Colors.separator.cgColor
-        tabBar.layer.borderWidth = 1
-        tabBar.layer.masksToBounds = true // позволяет содержимому внутри tabBara не выходить за его границы
+//        tabBar.layer.borderColor = Resources.Colors.separator.cgColor
+//        tabBar.layer.borderWidth = 1
+//        tabBar.layer.masksToBounds = true // позволяет содержимому внутри tabBara не выходить за его границы
 
         let myMoneyController = UIViewController()
         let budgetController = UIViewController()
         let lentaController = UIViewController()
         let coursesController = UIViewController()
-        let profileController = UIViewController()
+
+        let viewModel = ProfileViewModel()
+        let profileController = ProfileViewController(viewModel: viewModel)
 
         let myMoneyNavigation = NavBarController(rootViewController: myMoneyController)
         let budgetNavigation = NavBarController(rootViewController: budgetController)

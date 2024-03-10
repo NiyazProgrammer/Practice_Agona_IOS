@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: BaseViewController {
 
     private let settingView = SettingView(frame: .zero)
 
@@ -10,7 +10,8 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = "Настройка"
 
     }
 
