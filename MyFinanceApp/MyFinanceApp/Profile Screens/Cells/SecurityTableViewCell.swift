@@ -1,8 +1,6 @@
 import UIKit
-enum GeneralCards {
-    
-}
-class GeneralProfileTableViewCell: UITableViewCell {
+
+class SecurityTableViewCell: UITableViewCell {
 
     lazy var cardView: UIView = {
         let view = UIView()
@@ -39,7 +37,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -69,23 +67,22 @@ class GeneralProfileTableViewCell: UITableViewCell {
             cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 80),
 
-            nameCardLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            nameCardLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
-
             conteynerImageView.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            conteynerImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
+            conteynerImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
             conteynerImageView.widthAnchor.constraint(equalToConstant: 40),
             conteynerImageView.heightAnchor.constraint(equalToConstant: 40),
 
             imageCard.centerXAnchor.constraint(equalTo: conteynerImageView.centerXAnchor),
             imageCard.centerYAnchor.constraint(equalTo: conteynerImageView.centerYAnchor),
             imageCard.widthAnchor.constraint(equalToConstant: 20),
-            imageCard.heightAnchor.constraint(equalToConstant: 20)
+            imageCard.heightAnchor.constraint(equalToConstant: 20),
+
+            nameCardLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
+            nameCardLabel.leadingAnchor.constraint(equalTo: conteynerImageView.trailingAnchor, constant: 20),
         ])
     }
-
 }
-extension GeneralProfileTableViewCell {
+extension SecurityTableViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }

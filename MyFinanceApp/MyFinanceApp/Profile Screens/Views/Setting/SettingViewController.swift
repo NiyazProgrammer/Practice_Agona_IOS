@@ -11,7 +11,7 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Настройка"
+        title = "Настройки"
 
     }
 

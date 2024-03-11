@@ -4,6 +4,8 @@ enum Resources {
     enum Colors {
         static var active = UIColor(hexString: "#373062")
 
+        static var mainColorApp = UIColor(hexString: "#373062")
+
         static var inactive  = UIColor(hexString: "#bdbdbd")
         
         static var separator = UIColor(hexString: "bdbdbd")
@@ -25,6 +27,12 @@ enum Resources {
             static var favorites = "Избранные"
             static var notification = "Уведомления"
         }
+
+        enum SecurityCardsProfile {
+            static var codePassword = "Код-пароль"
+            static var changePassword = "Изменить пароль"
+            static var notification = "Push-Уведомления"
+        }
     }
 
     enum Images {
@@ -40,6 +48,12 @@ enum Resources {
             static var setting = UIImage(named: "setting")
             static var favorites = UIImage(named: "favorites")
             static var notification = UIImage(named: "notification")
+        }
+
+        enum SecurityCardsProfile {
+            static var codePassword = UIImage(named: "faceid")
+            static var changePassword = UIImage(named: "changePassword")
+            static var notification = UIImage(named: "notificationSecurity")
         }
     }
 

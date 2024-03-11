@@ -15,9 +15,10 @@ class ProfileView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "steveJob")
-        imageView.layer.cornerRadius = 85
+        imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 10.0
+        imageView.layer.borderWidth = 7.0
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.borderColor = UIColor.white.cgColor
         return imageView
     }()
@@ -29,15 +30,6 @@ class ProfileView: UIView {
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.sizeToFit()
-        return label
-    }()
-
-    lazy var generaLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Гавная"
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
     }()
 
@@ -97,6 +89,8 @@ class ProfileView: UIView {
         return table
     }()
 
+    var mainExpenseAndIcomeStackView: UIStackView?
+
     weak var delegate: ProfileViewDelegate?
 
     override init(frame: CGRect) {
@@ -107,9 +101,10 @@ class ProfileView: UIView {
         addSubview(nameLabel)
         addSubview(generalLabel)
         addSubview(generalTable)
-
-        setupContrait()
+        
         createStackViews()
+        setupContrait()
+
     }
     
     required init?(coder: NSCoder) {
@@ -120,20 +115,11 @@ class ProfileView: UIView {
         let expenseStackView = createVerticalStackView([expenseLabel, expenseNumberLabel])
         let incomeStackView = createVerticalStackView([incomeLabel, incomeNumberLabel])
 
-        let mainExpenseAndIcomeStackView = UIStackView(arrangedSubviews: [expenseStackView, incomeStackView])
-        mainExpenseAndIcomeStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainExpenseAndIcomeStackView.axis = .horizontal
-        mainExpenseAndIcomeStackView.distribution = .fillEqually
-        addSubview(mainExpenseAndIcomeStackView)
-
-        NSLayoutConstraint.activate([
-            mainExpenseAndIcomeStackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 40),
-            mainExpenseAndIcomeStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mainExpenseAndIcomeStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            generalLabel.topAnchor.constraint(equalTo: mainExpenseAndIcomeStackView.bottomAnchor, constant: 45),
-            generalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
-        ])
+        mainExpenseAndIcomeStackView = UIStackView(arrangedSubviews: [expenseStackView, incomeStackView])
+        mainExpenseAndIcomeStackView?.translatesAutoresizingMaskIntoConstraints = false
+        mainExpenseAndIcomeStackView?.axis = .horizontal
+        mainExpenseAndIcomeStackView?.distribution = .fillEqually
+        addSubview(mainExpenseAndIcomeStackView!)
     }
 
     func createVerticalStackView(_ views: [UIView]) -> UIStackView {
@@ -151,23 +137,28 @@ class ProfileView: UIView {
             backgraoundImageProfile.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             backgraoundImageProfile.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgraoundImageProfile.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgraoundImageProfile.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2),
+            backgraoundImageProfile.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3),
 
             profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileImage.topAnchor.constraint(equalTo: backgraoundImageProfile.topAnchor, constant: 100),
-            profileImage.widthAnchor.constraint(equalToConstant: 170),
-            profileImage.heightAnchor.constraint(equalToConstant: 170),
+            profileImage.topAnchor.constraint(equalTo: backgraoundImageProfile.topAnchor, constant: 50),
+            profileImage.widthAnchor.constraint(equalToConstant: 150),
+            profileImage.heightAnchor.constraint(equalToConstant: 150),
 
             nameLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 10),
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            generalLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
-            generalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            mainExpenseAndIcomeStackView!.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 40),
+            mainExpenseAndIcomeStackView!.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mainExpenseAndIcomeStackView!.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            generalLabel.topAnchor.constraint(equalTo: mainExpenseAndIcomeStackView!.bottomAnchor, constant: 30),
+            generalLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
             generalTable.topAnchor.constraint(equalTo: generalLabel.bottomAnchor, constant: 20),
             generalTable.leadingAnchor.constraint(equalTo: leadingAnchor),
             generalTable.trailingAnchor.constraint(equalTo: trailingAnchor),
-            generalTable.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            generalTable.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
+
         ])
 
     }
