@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		628FC9152BA97FFD00D01A5E /* TestForScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9142BA97FFD00D01A5E /* TestForScrollViewViewController.swift */; };
+		628FC9182BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9172BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift */; };
+		628FC91B2BA9B1BD00D01A5E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC91A2BA9B1BD00D01A5E /* DataManager.swift */; };
+		628FC91D2BA9D20E00D01A5E /* SecurityCardSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC91C2BA9D20E00D01A5E /* SecurityCardSettingView.swift */; };
+		628FC9202BAA028900D01A5E /* EditScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC91F2BAA028900D01A5E /* EditScreenView.swift */; };
+		628FC9222BAA02A000D01A5E /* EditScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9212BAA02A000D01A5E /* EditScreenViewController.swift */; };
+		628FC9242BAA02F200D01A5E /* EditScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9232BAA02F200D01A5E /* EditScreenViewModel.swift */; };
+		628FC9272BAA0FAB00D01A5E /* ChangeDataUserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9262BAA0FAB00D01A5E /* ChangeDataUserCardView.swift */; };
 		628FFAFD2B96476E00AC51CF /* GeneralProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */; };
 		628FFB2D2B97383900AC51CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB2C2B97383900AC51CF /* TabBarController.swift */; };
 		628FFB312B97399100AC51CF /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB302B97399100AC51CF /* UIColor + ext.swift */; };
@@ -36,6 +44,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		628FC9142BA97FFD00D01A5E /* TestForScrollViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestForScrollViewViewController.swift; sourceTree = "<group>"; };
+		628FC9172BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCardMainProfileView.swift; sourceTree = "<group>"; };
+		628FC91A2BA9B1BD00D01A5E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		628FC91C2BA9D20E00D01A5E /* SecurityCardSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCardSettingView.swift; sourceTree = "<group>"; };
+		628FC91F2BAA028900D01A5E /* EditScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenView.swift; sourceTree = "<group>"; };
+		628FC9212BAA02A000D01A5E /* EditScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenViewController.swift; sourceTree = "<group>"; };
+		628FC9232BAA02F200D01A5E /* EditScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenViewModel.swift; sourceTree = "<group>"; };
+		628FC9262BAA0FAB00D01A5E /* ChangeDataUserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDataUserCardView.swift; sourceTree = "<group>"; };
 		628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProfileTableViewCell.swift; sourceTree = "<group>"; };
 		628FFB2C2B97383900AC51CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		628FFB302B97399100AC51CF /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
@@ -77,6 +93,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		628FC9162BA9AC5900D01A5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				628FC9172BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift */,
+				628FC91C2BA9D20E00D01A5E /* SecurityCardSettingView.swift */,
+				628FC9262BAA0FAB00D01A5E /* ChangeDataUserCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		628FC9192BA9B1A700D01A5E /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				628FC91A2BA9B1BD00D01A5E /* DataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		628FC91E2BAA024B00D01A5E /* EditPage */ = {
+			isa = PBXGroup;
+			children = (
+				628FC9212BAA02A000D01A5E /* EditScreenViewController.swift */,
+				628FC91F2BAA028900D01A5E /* EditScreenView.swift */,
+				628FC9232BAA02F200D01A5E /* EditScreenViewModel.swift */,
+			);
+			name = EditPage;
+			sourceTree = "<group>";
+		};
+		628FC9252BAA071300D01A5E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB3D2B97998500AC51CF /* SettingViewController.swift */,
+				628FFB3F2B97999400AC51CF /* SettingView.swift */,
+				628FFB412B9799AA00AC51CF /* SettingViewModel.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		628FFAFE2B96477300AC51CF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +162,7 @@
 		628FFB2E2B97395800AC51CF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				628FC9162BA9AC5900D01A5E /* Views */,
 				628FFB2F2B97397000AC51CF /* Extensions */,
 				628FFB322B9739DE00AC51CF /* Resources.swift */,
 			);
@@ -123,14 +178,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		628FFB362B9745C000AC51CF /* Controllers */ = {
+		628FFB362B9745C000AC51CF /* BaseControllers */ = {
 			isa = PBXGroup;
 			children = (
 				628FFB2C2B97383900AC51CF /* TabBarController.swift */,
 				628FFB342B97430F00AC51CF /* NavBarController.swift */,
 				628FFB372B97477600AC51CF /* BaseViewController.swift */,
 			);
-			path = Controllers;
+			path = BaseControllers;
 			sourceTree = "<group>";
 		};
 		628FFB432B979C2500AC51CF /* Main */ = {
@@ -138,6 +193,7 @@
 			children = (
 				62A4D9D42B8B365500609449 /* ProfileViewController.swift */,
 				62A391382B95CD18005C9CCB /* ProfileView.swift */,
+				62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -145,8 +201,8 @@
 		628FFB442B979C2F00AC51CF /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				628FFB3D2B97998500AC51CF /* SettingViewController.swift */,
-				628FFB3F2B97999400AC51CF /* SettingView.swift */,
+				628FC9252BAA071300D01A5E /* Main */,
+				628FC91E2BAA024B00D01A5E /* EditPage */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -156,6 +212,7 @@
 			children = (
 				628FFB472B97A18700AC51CF /* NotificationViewController.swift */,
 				628FFB4D2B97A1C900AC51CF /* NotificationView.swift */,
+				628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -165,6 +222,7 @@
 			children = (
 				628FFB492B97A1A200AC51CF /* FavoritesViewController.swift */,
 				628FFB4B2B97A1B800AC51CF /* FavoritesView.swift */,
+				628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -173,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				62A3913D2B95CD57005C9CCB /* Views */,
-				62A3913E2B95CD62005C9CCB /* ViewModels */,
 				62A3913F2B95CD7C005C9CCB /* Model.swift */,
 				628FFAFE2B96477300AC51CF /* Cells */,
 			);
@@ -184,27 +241,17 @@
 			isa = PBXGroup;
 			children = (
 				628FFB432B979C2500AC51CF /* Main */,
-				628FFB462B97A14D00AC51CF /* Favorites */,
 				628FFB452B97A13A00AC51CF /* Notification */,
 				628FFB442B979C2F00AC51CF /* Setting */,
+				628FFB462B97A14D00AC51CF /* Favorites */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		62A3913E2B95CD62005C9CCB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */,
-				628FFB412B9799AA00AC51CF /* SettingViewModel.swift */,
-				628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */,
-				628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		62A4D9C42B8B365400609449 = {
 			isa = PBXGroup;
 			children = (
+				628FC9142BA97FFD00D01A5E /* TestForScrollViewViewController.swift */,
 				628FFB2E2B97395800AC51CF /* Helpers */,
 				62A4D9CF2B8B365500609449 /* MyFinanceApp */,
 				62A4D9CE2B8B365500609449 /* Products */,
@@ -222,11 +269,12 @@
 		62A4D9CF2B8B365500609449 /* MyFinanceApp */ = {
 			isa = PBXGroup;
 			children = (
+				628FC9192BA9B1A700D01A5E /* DataManager */,
 				628FFB2B2B97334700AC51CF /* Application */,
 				62A3913A2B95CD1F005C9CCB /* Profile Screens */,
 				628FFB2A2B9732D900AC51CF /* SupportingFiles */,
 				62A4D9D92B8B365500609449 /* MyFinanceApp.xcdatamodeld */,
-				628FFB362B9745C000AC51CF /* Controllers */,
+				628FFB362B9745C000AC51CF /* BaseControllers */,
 			);
 			path = MyFinanceApp;
 			sourceTree = "<group>";
@@ -302,13 +350,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				628FFB4C2B97A1B800AC51CF /* FavoritesView.swift in Sources */,
+				628FC9242BAA02F200D01A5E /* EditScreenViewModel.swift in Sources */,
 				628FFB552B9F939300AC51CF /* SecurityTableViewCell.swift in Sources */,
 				628FFB382B97477600AC51CF /* BaseViewController.swift in Sources */,
 				628FFB4E2B97A1C900AC51CF /* NotificationView.swift in Sources */,
 				62A391402B95CD7C005C9CCB /* Model.swift in Sources */,
+				628FC9152BA97FFD00D01A5E /* TestForScrollViewViewController.swift in Sources */,
 				62A3913C2B95CD44005C9CCB /* ProfileViewModel.swift in Sources */,
+				628FC91D2BA9D20E00D01A5E /* SecurityCardSettingView.swift in Sources */,
 				628FFAFD2B96476E00AC51CF /* GeneralProfileTableViewCell.swift in Sources */,
 				628FFB312B97399100AC51CF /* UIColor + ext.swift in Sources */,
+				628FC9272BAA0FAB00D01A5E /* ChangeDataUserCardView.swift in Sources */,
+				628FC9202BAA028900D01A5E /* EditScreenView.swift in Sources */,
 				628FFB402B97999400AC51CF /* SettingView.swift in Sources */,
 				628FFB502B97A1DC00AC51CF /* NotificationViewModel.swift in Sources */,
 				628FFB532B97A22F00AC51CF /* FavoritesViewModel.swift in Sources */,
@@ -318,12 +371,15 @@
 				62A4D9DB2B8B365500609449 /* MyFinanceApp.xcdatamodeld in Sources */,
 				628FFB4A2B97A1A200AC51CF /* FavoritesViewController.swift in Sources */,
 				62A4D9D52B8B365500609449 /* ProfileViewController.swift in Sources */,
+				628FC9222BAA02A000D01A5E /* EditScreenViewController.swift in Sources */,
 				628FFB3A2B9748F700AC51CF /* UIView + ext.swift in Sources */,
 				628FFB352B97430F00AC51CF /* NavBarController.swift in Sources */,
 				62A391392B95CD18005C9CCB /* ProfileView.swift in Sources */,
 				628FFB482B97A18700AC51CF /* NotificationViewController.swift in Sources */,
 				628FFB332B9739DE00AC51CF /* Resources.swift in Sources */,
 				62A4D9D12B8B365500609449 /* AppDelegate.swift in Sources */,
+				628FC9182BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift in Sources */,
+				628FC91B2BA9B1BD00D01A5E /* DataManager.swift in Sources */,
 				62A4D9D32B8B365500609449 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

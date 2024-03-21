@@ -1,7 +1,34 @@
 import UIKit
-
+private enum NumberSecurityCard {
+    static let appsPassword = 0
+    static let changePasword = 1
+    static let PushNotification = 2
+}
+protocol SettingViewDelegate: AnyObject {
+    func didPressAppsPasswordCard()
+    func didPressChangePasswordCard()
+    func didPressPushNotificationCard()
+}
+protocol SettingViewForButtonDelegate: AnyObject {
+    func didPressButtonEdit()
+}
 class SettingView: UIView {
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .clear
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.alwaysBounceVertical = true
+        return scrollView
+    }()
 
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.backgroundColor = .clear
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
+    }()
+    
     lazy var imageUser: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "steveJob"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,8 +69,8 @@ class SettingView: UIView {
     }()
 
     lazy var editButton: UIButton = {
-        let action = UIAction { _ in
-            // action edit profile data
+        let action = UIAction { [weak self] _ in
+            self?.editButtondelegate?.didPressButtonEdit()
         }
         let button = UIButton(type: .system,primaryAction: action)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -65,26 +92,31 @@ class SettingView: UIView {
         return label
     }()
 
-    lazy var securityTable: UITableView = {
-        let table = UITableView()
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.dataSource = self
-        table.delegate = self
-        table.backgroundColor = .clear
-        table.separatorStyle = .none
-        table.register(SecurityTableViewCell.self, forCellReuseIdentifier: SecurityTableViewCell.reuseIdentifier)
-        return table
+    private let securityCardsSV: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        return stackView
     }()
+    
+    weak var delegate: SettingViewDelegate?
+    weak var editButtondelegate: SettingViewForButtonDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(imageUser)
-        addSubview(nameAndEmailStackView)
-        addSubview(editButton)
-        addSubview(securityLabel)
-        addSubview(securityTable)
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(imageUser)
+        contentView.addSubview(nameAndEmailStackView)
+        contentView.addSubview(editButton)
+        contentView.addSubview(securityLabel)
+        contentView.addSubview(securityCardsSV)
 
         setupLayout()
+
+        createAllCards()
     }
 
     required init?(coder: NSCoder) {
@@ -93,65 +125,72 @@ class SettingView: UIView {
 
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            imageUser.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            imageUser.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+
+            imageUser.topAnchor.constraint(equalTo:  contentView.topAnchor, constant: 20),
+            imageUser.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor, constant: 20),
             imageUser.widthAnchor.constraint(equalToConstant: 60),
             imageUser.heightAnchor.constraint(equalToConstant: 60),
 
             nameAndEmailStackView.topAnchor.constraint(equalTo: imageUser.topAnchor),
             nameAndEmailStackView.leadingAnchor.constraint(equalTo: imageUser.trailingAnchor, constant: 15),
-            nameAndEmailStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            nameAndEmailStackView.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor, constant: -20),
 
             editButton.topAnchor.constraint(equalTo: imageUser.bottomAnchor, constant: 20),
-            editButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            editButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            editButton.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor, constant: 20),
+            editButton.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor, constant: -20),
             editButton.heightAnchor.constraint(equalToConstant: 30),
 
             securityLabel.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 40),
             securityLabel.leadingAnchor.constraint(equalTo: editButton.leadingAnchor),
 
-            securityTable.topAnchor.constraint(equalTo: securityLabel.bottomAnchor, constant: 20),
-            securityTable.leadingAnchor.constraint(equalTo: leadingAnchor),
-            securityTable.trailingAnchor.constraint(equalTo: trailingAnchor),
-            securityTable.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
-
-            
+            securityCardsSV.topAnchor.constraint(equalTo: securityLabel.bottomAnchor, constant: 20),
+            securityCardsSV.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            securityCardsSV.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            securityCardsSV.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-}
-extension SettingView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+
+    private func createCard(numbersCard: Int, withTapHandler tapHandler: Selector) {
+        let card = DataManager.shared.securityCardsSetting[numbersCard]
+        let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
+        card.addGestureRecognizer(tapGesture)
+        securityCardsSV.addArrangedSubview(card)
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if let cell = tableView.dequeueReusableCell(
-            withIdentifier: SecurityTableViewCell.reuseIdentifier, for: indexPath
-        ) as?  SecurityTableViewCell {
-            cell.selectionStyle = .none
-
-            let titleObject = Resources.Strings.SecurityCardsProfile.self
-            let imageObject = Resources.Images.SecurityCardsProfile.self
-
-            switch indexPath.row {
-            case 0:
-                cell.configure(with: titleObject.codePassword, image: imageObject.codePassword!, color: .green)
-                break
-            case 1:
-                cell.configure(with: titleObject.changePassword, image: imageObject.changePassword!, color: .lightGray)
-            case 2:
-                cell.configure(with: titleObject.notification, image: imageObject.notification!, color: UIColor(hexString: "#f84608"))
-                break
-            default:
-                break
-            }
-            return cell
-        } else {
-            return UITableViewCell()
-        }
-
+    private func createAllCards() {
+        createCard(
+            numbersCard: NumberSecurityCard.appsPassword,
+            withTapHandler: #selector(handleAppsPasswordCardTap(_:))
+        )
+        createCard(
+            numbersCard: NumberSecurityCard.changePasword,
+            withTapHandler: #selector(handleChangePasswordCardTap(_:))
+        )
+        createCard(
+            numbersCard: NumberSecurityCard.PushNotification,
+            withTapHandler: #selector(handlePushNotificationCardTap(_:))
+        )
     }
-    
 
+    @objc func handleAppsPasswordCardTap(_ sender: UITapGestureRecognizer) {
+        delegate?.didPressAppsPasswordCard()
+    }
+
+    @objc func handleChangePasswordCardTap(_ sender: UITapGestureRecognizer) {
+        delegate?.didPressChangePasswordCard()
+    }
+
+    @objc func handlePushNotificationCardTap(_ sender: UITapGestureRecognizer) {
+        delegate?.didPressPushNotificationCard()
+    }
 }

@@ -1,7 +1,13 @@
+//
+//  SecurityCardSettingView.swift
+//  MyFinanceApp
+//
+//  Created by Нияз Ризванов on 19.03.2024.
+//
+
 import UIKit
 
-class SecurityTableViewCell: UITableViewCell {
-
+class SecurityCardSettingView: UIView {
     lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,15 +49,20 @@ class SecurityTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    init(cardName: String, image: UIImage, color: UIColor) {
+        super.init(frame: .zero)
+        
+        nameCardLabel.text = cardName
+        imageCard.image = image
+        conteynerImageView.backgroundColor = color
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.addSubview(cardView)
-        contentView.addSubview(nameCardLabel)
-        contentView.addSubview(conteynerImageView)
-        contentView.addSubview(imageCard)
-        contentView.addSubview(nextRightArrow)
+        addSubview(cardView)
+        addSubview(nameCardLabel)
+        addSubview(conteynerImageView)
+        addSubview(imageCard)
+        addSubview(nextRightArrow)
 
         setupLayout()
     }
@@ -60,18 +71,12 @@ class SecurityTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with title: String, image: UIImage, color: UIColor) {
-        nameCardLabel.text = title
-        imageCard.image = image
-        conteynerImageView.backgroundColor = color
-    }
-
     func setupLayout() {
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            cardView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            cardView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            cardView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 80),
 
             conteynerImageView.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
@@ -90,10 +95,5 @@ class SecurityTableViewCell: UITableViewCell {
             nextRightArrow.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             nextRightArrow.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20)
         ])
-    }
-}
-extension SecurityTableViewCell {
-    static var reuseIdentifier: String {
-        return String(describing: self)
     }
 }

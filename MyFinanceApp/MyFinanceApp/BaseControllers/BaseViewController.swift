@@ -8,7 +8,7 @@ class BaseViewController: UIViewController {
         configure()
     }
 }
-@objc extension BaseViewController {
+extension BaseViewController {
     func addViews() {}
     func layoutViews() {}
     func configure() {

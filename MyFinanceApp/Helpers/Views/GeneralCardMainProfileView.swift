@@ -1,7 +1,6 @@
 import UIKit
 
-class SecurityTableViewCell: UITableViewCell {
-
+class GeneralCardMainProfileView: UIView {
     lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,63 +36,47 @@ class SecurityTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-    lazy var nextRightArrow: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "rightArrow"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    init(nameCard: String, imageCard: UIImage, colorLogo: UIColor) {
+        super.init(frame: .zero)
         backgroundColor = .clear
-        contentView.addSubview(cardView)
-        contentView.addSubview(nameCardLabel)
-        contentView.addSubview(conteynerImageView)
-        contentView.addSubview(imageCard)
-        contentView.addSubview(nextRightArrow)
+        
+        nameCardLabel.text = nameCard
+        self.imageCard.image = imageCard
+        conteynerImageView.backgroundColor = colorLogo
+
+        addSubview(cardView)
+        addSubview(nameCardLabel)
+        addSubview(conteynerImageView)
+        addSubview(self.imageCard)
 
         setupLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func configure(with title: String, image: UIImage, color: UIColor) {
-        nameCardLabel.text = title
-        imageCard.image = image
-        conteynerImageView.backgroundColor = color
-    }
-
+    
     func setupLayout() {
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            cardView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            cardView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            cardView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 80),
 
+            nameCardLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
+            nameCardLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
+
             conteynerImageView.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            conteynerImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
+            conteynerImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
             conteynerImageView.widthAnchor.constraint(equalToConstant: 40),
             conteynerImageView.heightAnchor.constraint(equalToConstant: 40),
 
             imageCard.centerXAnchor.constraint(equalTo: conteynerImageView.centerXAnchor),
             imageCard.centerYAnchor.constraint(equalTo: conteynerImageView.centerYAnchor),
             imageCard.widthAnchor.constraint(equalToConstant: 20),
-            imageCard.heightAnchor.constraint(equalToConstant: 20),
-
-            nameCardLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            nameCardLabel.leadingAnchor.constraint(equalTo: conteynerImageView.trailingAnchor, constant: 20),
-
-            nextRightArrow.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            nextRightArrow.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20)
+            imageCard.heightAnchor.constraint(equalToConstant: 20)
         ])
-    }
-}
-extension SecurityTableViewCell {
-    static var reuseIdentifier: String {
-        return String(describing: self)
     }
 }
