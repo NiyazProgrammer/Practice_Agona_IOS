@@ -17,11 +17,10 @@ class ChangeDataUserCardView: UIView {
         label.font = .systemFont(ofSize: 16)
         return label
     }()
-
-    private let dataTextField: UITextField = {
+    
+    lazy var dataTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Введите фамилию"
         textField.layer.cornerRadius = 4
         textField.returnKeyType = .done
         textField.autocapitalizationType = .words
@@ -38,8 +37,6 @@ class ChangeDataUserCardView: UIView {
         image.backgroundColor = Resources.Colors.mainColorApp
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
-//        image.layer.borderWidth = 5
-//        image.layer.borderColor = Resources.Colors.mainColorApp.cgColor
         return image
     }()
 
@@ -54,9 +51,8 @@ class ChangeDataUserCardView: UIView {
 
     init(cardName: String, textPlaceholder: String) {
         nameCard.text = cardName
-        dataTextField.placeholder = textPlaceholder
         super.init(frame: .zero)
-
+        dataTextField.placeholder = textPlaceholder
         addSubview(cardView)
         addSubview(editImage)
         cardView.addSubview(nameAndTextField)
@@ -85,6 +81,5 @@ class ChangeDataUserCardView: UIView {
             nameAndTextField.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             nameAndTextField.trailingAnchor.constraint(equalTo: editImage.leadingAnchor, constant: -20)
         ])
-
     }
 }
