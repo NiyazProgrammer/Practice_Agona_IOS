@@ -65,8 +65,7 @@ enum Resources {
     }
 
     enum Images {
-        static let defaultAvatar = UIImage(named: "defaultAvatar")
-        
+
         enum TabBar {
             static let myMoney = UIImage(named: "general")
             static let budget = UIImage(named: "budget")
@@ -90,6 +89,7 @@ enum Resources {
         enum ChangeDataCards { 
             static let editPencil = UIImage(named: "editPencil")
             static let editCamera = UIImage(named: "editCamera")
+            static let defaultAvatar = UIImage(named: "defaultAvatar")
         }
 
     }

@@ -14,9 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 
+//        let vm = LoginViewModel()
 //        guard let windowScene = (scene as? UIWindowScene) else { return }
 //        window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController = TestForScrollViewViewController()
+//        window?.rootViewController = LoginViewController(viewModel: vm)
 //        window?.makeKeyAndVisible()
     }
 

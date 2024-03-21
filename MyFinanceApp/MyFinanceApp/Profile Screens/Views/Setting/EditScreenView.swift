@@ -18,7 +18,7 @@ class EditScreenView: UIView {
     }()
     
     private lazy var avatarImage: UIImageView = {
-        let avatar = UIImageView(image: Resources.Images.defaultAvatar)
+        let avatar = UIImageView(image: Resources.Images.ChangeDataCards.defaultAvatar)
         avatar.contentMode = .scaleAspectFit
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.layer.cornerRadius = 40
@@ -26,7 +26,7 @@ class EditScreenView: UIView {
         return avatar
     }()
 
-    private let dataCardsSV: UIStackView = {
+    let dataCardsSV: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -36,6 +36,14 @@ class EditScreenView: UIView {
         return stackView
     }()
 
+    private let editAvatarbutton: UIButton = {
+        let action = UIAction {_ in 
+            
+        }
+        let button = UIButton(type: .system, primaryAction: action)
+        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -43,8 +51,6 @@ class EditScreenView: UIView {
         scrollView.addSubview(contentView)
         contentView.addSubview(avatarImage)
         contentView.addSubview(dataCardsSV)
-        
-        createChangeDataCards()
         
         setupLayout()
     }
@@ -77,10 +83,6 @@ class EditScreenView: UIView {
             dataCardsSV.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-
-    private func createChangeDataCards() {
-        for card in DataManager.shared.changeDataCards {
-            dataCardsSV.addArrangedSubview(card)
-        }
-    }
 }
+
+

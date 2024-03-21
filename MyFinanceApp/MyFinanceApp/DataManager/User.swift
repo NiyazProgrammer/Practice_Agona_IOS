@@ -1,8 +1,9 @@
-//
-//  User.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 21.03.2024.
-//
-
 import Foundation
+
+struct User {
+    let name: String?
+    let lastName: String?
+    let middleName: String?
+    let email: String?
+    let nickName: String?
+}

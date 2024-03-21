@@ -2,9 +2,6 @@ import Foundation
 import UIKit
 
 class DataManager {
-    static let shared = DataManager()
-
-    private init() { }
 
     let generalCardsMainProfile: [GeneralCardMainProfileView] = [
         GeneralCardMainProfileView(

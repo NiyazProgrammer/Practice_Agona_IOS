@@ -161,7 +161,8 @@ class SettingView: UIView {
     }
 
     private func createCard(numbersCard: Int, withTapHandler tapHandler: Selector) {
-        let card = DataManager.shared.securityCardsSetting[numbersCard]
+        let dataManager = DataManager()
+        let card = dataManager.securityCardsSetting[numbersCard]
         let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
         card.addGestureRecognizer(tapGesture)
         securityCardsSV.addArrangedSubview(card)

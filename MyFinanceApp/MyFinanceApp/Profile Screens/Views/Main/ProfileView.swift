@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 private enum NumberCard {
     static let setting = 0
     static let favorites = 1
@@ -153,7 +154,8 @@ class ProfileView: UIView {
     }
 
     private func createCard(numbersCard: Int, withTapHandler tapHandler: Selector) {
-        let card = DataManager.shared.generalCardsMainProfile[numbersCard]
+        let dataManager = DataManager()
+        let card = dataManager.generalCardsMainProfile[numbersCard]
         let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
         card.addGestureRecognizer(tapGesture)
         generalCardsSV.addArrangedSubview(card)
