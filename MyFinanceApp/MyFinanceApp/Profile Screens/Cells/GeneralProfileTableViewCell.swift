@@ -65,8 +65,8 @@ class GeneralProfileTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
+            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 80),
 
             nameCardLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),

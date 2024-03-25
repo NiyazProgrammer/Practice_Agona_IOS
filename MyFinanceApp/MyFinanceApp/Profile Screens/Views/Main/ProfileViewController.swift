@@ -35,16 +35,15 @@ class ProfileViewController: BaseViewController {
 
 }
 extension ProfileViewController: ProfileViewDelegate{
-    func didPressCard(cardId: Int) {
-        switch cardId {
-        case 0:
-            navigationController?.pushViewController(SettingViewController(), animated: true)
-        case 1:
-            navigationController?.pushViewController(FavoritesViewController(), animated: true)
-        case 2:
-            navigationController?.pushViewController(NotificationViewController(), animated: true)
-        default:
-            break
-        }
+    func didPressSettingCard() {
+        navigationController?.pushViewController(SettingViewController(), animated: true)
+    }
+    
+    func didPressFavoritesCard() {
+        navigationController?.pushViewController(FavoritesViewController(), animated: true)
+    }
+    
+    func didPressNotificationCard() {
+        navigationController?.pushViewController(NotificationViewController(), animated: true)
     }
 }
