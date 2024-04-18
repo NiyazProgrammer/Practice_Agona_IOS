@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+class ChangePasswordViewModel {
+    // MARK: Пока неработал с логикой для экрана
+}

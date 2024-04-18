@@ -1,42 +1,75 @@
 import Foundation
 import FirebaseStorage
 import FirebaseFirestore
+import Kingfisher
 
+enum SetImageAvatarUserError: Error {
+    case setImageError
+}
 class APIManager {
 
     static let shared = APIManager()
 
-    func configureFB() -> Firestore {
-        var db: Firestore!
+    private init() { }
+
+    private func configureFB() -> Firestore {
+        var dataBase: Firestore!
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        db = Firestore.firestore()
-        return db
+        dataBase = Firestore.firestore()
+        return dataBase
     }
 
-    func getPost(collection: String, docName: String, completion: @escaping (User?) -> Void) {
-        let db = configureFB()
-        db.collection(collection).document(docName).getDocument { document, error in
+    func getUser(collection: String, docName: String, completion: @escaping (User?) -> Void) {
+        let dataBase = configureFB()
+        dataBase.collection(collection).document(docName).getDocument { document, error in
             guard error == nil else { completion(nil); return }
 
-//            let doc = Document(field1: document?.get("field1") as! String, field2: document?.get("field2") as! String)
-//            completion(doc)
+            let user = User(
+                email: document?.get("email") as? String,
+                firstName: document?.get("firstName") as? String,
+                lastName: document?.get("lastName") as? String,
+                middleName: document?.get("middleName") as? String,
+                userName: document?.get("nickName") as? String)
+            completion(user)
         }
     }
 
     func getImage(imageName: String, completion: @escaping (UIImage) -> Void) {
         let storage = Storage.storage()
         let reference = storage.reference()
-        let pathRef = reference.child("pictures")
+        let pathRef = reference.child("UsersImage")
 
-        var image = UIImage(named: "errorImage")
+        let image = UIImage(named: "errorImage")
 
-        let fileRef = pathRef.child(imageName + ".jpg")
-        fileRef.getData(maxSize: 1024*1024) { data, error in
-            guard error == nil else { completion(image!); return }
-            image = UIImage(data: data!)!
-            completion(image!)
+        let fileRef = pathRef.child(imageName + ".png")
+        fileRef.downloadURL { url, error in
+            guard let url = url, error == nil else {
+                completion(image ?? UIImage())
+                return
+            }
+            KingfisherManager.shared.retrieveImage(with: url) { result in
+                switch result {
+                case .success(let imageResult):
+                    let loadedImage = imageResult.image
+                    completion(loadedImage)
+                case .failure(let error):
+                    print("Failed to load image: \(error)")
+                }
+            }
         }
+    }
 
+    func setImageAvatar(imageData: Data) {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let pathRef = storageRef.child("UsersImage/file.png")
+
+        pathRef.putData(imageData) { _, error in
+            guard error == nil else {
+                print("Erorr upload image: \(String(describing: error))")
+                return
+            }
+        }
     }
 }

@@ -1,7 +1,8 @@
 import UIKit
 import SnapKit
 
-class FavoritesView: UIView {
+// MARK: Старая реализация. Не получилось применить
+class FavoritesViewOld: UIView {
     private let collectionTitleText = Resources.Strings.all
 
     private lazy var navigationHorizontalScroll: UICollectionView = {
@@ -36,7 +37,8 @@ class FavoritesView: UIView {
     }
 }
 
-extension FavoritesView: UICollectionViewDataSource, UICollectionViewDelegate {
+
+extension FavoritesViewOld: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionTitleText.count
     }

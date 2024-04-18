@@ -1,7 +1,5 @@
 import UIKit
-enum GeneralCards {
-    
-}
+
 class GeneralProfileTableViewCell: UITableViewCell {
 
     lazy var cardView: UIView = {
@@ -50,7 +48,6 @@ class GeneralProfileTableViewCell: UITableViewCell {
 
         setupLayout()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -65,7 +62,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 20),
+            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 80),
 

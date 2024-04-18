@@ -1,7 +1,7 @@
 import UIKit
 
 class ChangeDataUserCardView: UIView {
-    lazy var cardView: UIView = {
+    private lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 30
@@ -9,7 +9,6 @@ class ChangeDataUserCardView: UIView {
         view.backgroundColor = .white
         return view
     }()
-    
     private let nameCard: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +16,6 @@ class ChangeDataUserCardView: UIView {
         label.font = .systemFont(ofSize: 16)
         return label
     }()
-    
     lazy var dataTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +62,7 @@ class ChangeDataUserCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor),

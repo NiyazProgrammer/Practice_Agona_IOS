@@ -1,6 +1,7 @@
 import UIKit
 
 class EditScreenView: UIView {
+    var didTapEditAvatarImage: (() -> Void)?
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -16,14 +17,24 @@ class EditScreenView: UIView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-    
-    private lazy var avatarImage: UIImageView = {
-        let avatar = UIImageView(image: Resources.Images.ChangeDataCards.defaultAvatar)
-        avatar.contentMode = .scaleAspectFit
+    lazy var avatarImage: UIImageView = {
+        let avatar = UIImageView()
+        avatar.contentMode = .scaleAspectFill
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.layer.cornerRadius = 40
         avatar.clipsToBounds = true
         return avatar
+    }()
+
+    private lazy var editAvatarImageBtn: UIButton = {
+        let action = UIAction { [weak self] _ in
+            (self?.didTapEditAvatarImage ?? {})()
+        }
+        let button = UIButton(type: .system, primaryAction: action)
+        button.setTitle("Выбрать фотографию", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     let dataCardsSV: UIStackView = {
@@ -36,25 +47,27 @@ class EditScreenView: UIView {
         return stackView
     }()
 
-//    private let editAvatarbutton: UIButton = {
-//        let action = UIAction {_ in 
-//            
-//        }
-////        let button = UIButton(type: .system, primaryAction: action)
-////        button.setImage(, for: )
-//    }()
+    private let saveButton: UIButton = {
+        let button = SaveButtonBuilder()
+            .setTitle("Сохранить")
+            .setBackgroundColor(Resources.Colors.mainColorApp)
+            .setCornerRadius(10)
+            .build()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(avatarImage)
+        contentView.addSubview(editAvatarImageBtn)
         contentView.addSubview(dataCardsSV)
-        
+        contentView.addSubview(saveButton)
         setupLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -77,12 +90,22 @@ class EditScreenView: UIView {
             avatarImage.widthAnchor.constraint(equalToConstant: 80),
             avatarImage.heightAnchor.constraint(equalToConstant: 80),
 
-            dataCardsSV.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 30),
+            editAvatarImageBtn.topAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 10),
+            editAvatarImageBtn.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            dataCardsSV.topAnchor.constraint(equalTo: editAvatarImageBtn.bottomAnchor, constant: 10),
             dataCardsSV.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             dataCardsSV.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            dataCardsSV.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+
+            saveButton.topAnchor.constraint(equalTo: dataCardsSV.bottomAnchor, constant: 30),
+            saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            saveButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
+
+    func configure(user: User) {
+        avatarImage.image = user.avatarImage
+    }
 }
-
-
