@@ -15,6 +15,17 @@ class EditScreenViewController: BaseViewController {
     
     override func loadView() {
         view = editView
+        editView.didTapEditAvatarImage = { [weak self] in
+            self?.imagePicker.showImagePicker(in: self ?? UIViewController()) { result in
+                switch result {
+                case .success(_):
+                    UserDataManager.shared.setupCurrentUser()
+                case .failure(_):
+                    
+                }
+//                self?.editView.avatarImage.image = image
+            }
+        }
     }
 
     override func viewDidLoad() {

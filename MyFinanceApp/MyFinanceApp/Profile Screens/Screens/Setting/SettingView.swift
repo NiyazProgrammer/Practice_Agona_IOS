@@ -28,7 +28,7 @@ class SettingView: UIView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-    
+
     lazy var imageUser: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "steveJob"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
