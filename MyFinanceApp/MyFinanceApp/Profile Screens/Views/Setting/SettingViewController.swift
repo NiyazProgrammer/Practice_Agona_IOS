@@ -11,8 +11,31 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Настройка"
+        title = "Настройки"
 
+        settingView.editButtondelegate = self
     }
 
+}
+
+extension SettingViewController: SettingViewDelegate {
+    func didPressAppsPasswordCard() {
+        //
+    }
+
+    func didPressChangePasswordCard() {
+        //
+    }
+
+    func didPressPushNotificationCard() {
+        //
+    }
+}
+
+extension SettingViewController: SettingViewForButtonDelegate {
+    func didPressButtonEdit() {
+        let viewModel = EditScreenViewModel()
+        let editController = EditScreenViewController(viewModel: viewModel)
+        navigationController?.pushViewController(editController, animated: true)
+    }
 }

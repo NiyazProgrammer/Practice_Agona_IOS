@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622293F62BAC1CB90062B4CD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622293F52BAC1CB90062B4CD /* LoginView.swift */; };
+		622293F82BAC1CC70062B4CD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622293F72BAC1CC70062B4CD /* LoginViewController.swift */; };
+		622293FA2BAC1D1B0062B4CD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622293F92BAC1D1A0062B4CD /* LoginViewModel.swift */; };
+		622293FC2BAC3DB70062B4CD /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622293FB2BAC3DB70062B4CD /* KeyChainManager.swift */; };
+		622293FE2BAC80870062B4CD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622293FD2BAC80870062B4CD /* User.swift */; };
+		628FC9182BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9172BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift */; };
+		628FC91B2BA9B1BD00D01A5E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC91A2BA9B1BD00D01A5E /* DataManager.swift */; };
+		628FC91D2BA9D20E00D01A5E /* SecurityCardSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC91C2BA9D20E00D01A5E /* SecurityCardSettingView.swift */; };
+		628FC9202BAA028900D01A5E /* EditScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC91F2BAA028900D01A5E /* EditScreenView.swift */; };
+		628FC9222BAA02A000D01A5E /* EditScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9212BAA02A000D01A5E /* EditScreenViewController.swift */; };
+		628FC9242BAA02F200D01A5E /* EditScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9232BAA02F200D01A5E /* EditScreenViewModel.swift */; };
+		628FC9272BAA0FAB00D01A5E /* ChangeDataUserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC9262BAA0FAB00D01A5E /* ChangeDataUserCardView.swift */; };
+		628FC92B2BAB0CB300D01A5E /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FC92A2BAB0CB300D01A5E /* ApiManager.swift */; };
+		628FC92E2BAB0D2100D01A5E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 628FC92D2BAB0D2100D01A5E /* FirebaseAnalytics */; };
+		628FC9322BAB0D2100D01A5E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 628FC9312BAB0D2100D01A5E /* FirebaseAnalyticsSwift */; };
+		628FC9342BAB0D2100D01A5E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 628FC9332BAB0D2100D01A5E /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		628FC9362BAB0D2100D01A5E /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 628FC9352BAB0D2100D01A5E /* FirebaseAppCheck */; };
+		628FC9392BAB0D4300D01A5E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 628FC9382BAB0D4300D01A5E /* FirebaseFirestore */; };
+		628FC93B2BAB0D5000D01A5E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 628FC93A2BAB0D5000D01A5E /* FirebaseStorage */; };
 		628FFAFD2B96476E00AC51CF /* GeneralProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */; };
 		628FFB2D2B97383900AC51CF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB2C2B97383900AC51CF /* TabBarController.swift */; };
 		628FFB312B97399100AC51CF /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB302B97399100AC51CF /* UIColor + ext.swift */; };
@@ -23,6 +42,7 @@
 		628FFB4E2B97A1C900AC51CF /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB4D2B97A1C900AC51CF /* NotificationView.swift */; };
 		628FFB502B97A1DC00AC51CF /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */; };
 		628FFB532B97A22F00AC51CF /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */; };
+		628FFB552B9F939300AC51CF /* SecurityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFB542B9F939300AC51CF /* SecurityTableViewCell.swift */; };
 		62A391392B95CD18005C9CCB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A391382B95CD18005C9CCB /* ProfileView.swift */; };
 		62A3913C2B95CD44005C9CCB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */; };
 		62A391402B95CD7C005C9CCB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A3913F2B95CD7C005C9CCB /* Model.swift */; };
@@ -32,9 +52,25 @@
 		62A4D9DB2B8B365500609449 /* MyFinanceApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62A4D9D92B8B365500609449 /* MyFinanceApp.xcdatamodeld */; };
 		62A4D9DD2B8B365700609449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62A4D9DC2B8B365700609449 /* Assets.xcassets */; };
 		62A4D9E02B8B365700609449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62A4D9DE2B8B365700609449 /* LaunchScreen.storyboard */; };
+		BE17ECF3C4C281D05B222FCF /* Pods_MyFinanceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E79AAA8229F4ABB879026BE /* Pods_MyFinanceApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C689F27BA485AD4F722F3F3 /* Pods-MyFinanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinanceApp.debug.xcconfig"; path = "Target Support Files/Pods-MyFinanceApp/Pods-MyFinanceApp.debug.xcconfig"; sourceTree = "<group>"; };
+		622293F32BAC12270062B4CD /* MyFinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		622293F52BAC1CB90062B4CD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		622293F72BAC1CC70062B4CD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		622293F92BAC1D1A0062B4CD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		622293FB2BAC3DB70062B4CD /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		622293FD2BAC80870062B4CD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		628FC9172BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCardMainProfileView.swift; sourceTree = "<group>"; };
+		628FC91A2BA9B1BD00D01A5E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		628FC91C2BA9D20E00D01A5E /* SecurityCardSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCardSettingView.swift; sourceTree = "<group>"; };
+		628FC91F2BAA028900D01A5E /* EditScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenView.swift; sourceTree = "<group>"; };
+		628FC9212BAA02A000D01A5E /* EditScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenViewController.swift; sourceTree = "<group>"; };
+		628FC9232BAA02F200D01A5E /* EditScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenViewModel.swift; sourceTree = "<group>"; };
+		628FC9262BAA0FAB00D01A5E /* ChangeDataUserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDataUserCardView.swift; sourceTree = "<group>"; };
+		628FC92A2BAB0CB300D01A5E /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralProfileTableViewCell.swift; sourceTree = "<group>"; };
 		628FFB2C2B97383900AC51CF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		628FFB302B97399100AC51CF /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
@@ -51,10 +87,10 @@
 		628FFB4D2B97A1C900AC51CF /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		628FFB542B9F939300AC51CF /* SecurityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityTableViewCell.swift; sourceTree = "<group>"; };
 		62A391382B95CD18005C9CCB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		62A3913F2B95CD7C005C9CCB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		62A4D9CD2B8B365500609449 /* MyFinanceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinanceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62A4D9D02B8B365500609449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62A4D9D22B8B365500609449 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		62A4D9D42B8B365500609449 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +98,8 @@
 		62A4D9DC2B8B365700609449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62A4D9DF2B8B365700609449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62A4D9E12B8B365700609449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E79AAA8229F4ABB879026BE /* Pods_MyFinanceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFinanceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96C35C2A0D277B4441E99A09 /* Pods-MyFinanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFinanceApp.release.xcconfig"; path = "Target Support Files/Pods-MyFinanceApp/Pods-MyFinanceApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,16 +107,83 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				628FC9322BAB0D2100D01A5E /* FirebaseAnalyticsSwift in Frameworks */,
+				628FC92E2BAB0D2100D01A5E /* FirebaseAnalytics in Frameworks */,
+				628FC9362BAB0D2100D01A5E /* FirebaseAppCheck in Frameworks */,
+				628FC93B2BAB0D5000D01A5E /* FirebaseStorage in Frameworks */,
+				628FC9342BAB0D2100D01A5E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				628FC9392BAB0D4300D01A5E /* FirebaseFirestore in Frameworks */,
+				BE17ECF3C4C281D05B222FCF /* Pods_MyFinanceApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		409C82F3D3B9DFC48AC0F4CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E79AAA8229F4ABB879026BE /* Pods_MyFinanceApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		622293F42BAC1CA60062B4CD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				622293F52BAC1CB90062B4CD /* LoginView.swift */,
+				622293F72BAC1CC70062B4CD /* LoginViewController.swift */,
+				622293F92BAC1D1A0062B4CD /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		628FC9162BA9AC5900D01A5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				628FC9172BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift */,
+				628FC91C2BA9D20E00D01A5E /* SecurityCardSettingView.swift */,
+				628FC9262BAA0FAB00D01A5E /* ChangeDataUserCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		628FC9192BA9B1A700D01A5E /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				628FC91A2BA9B1BD00D01A5E /* DataManager.swift */,
+				622293FD2BAC80870062B4CD /* User.swift */,
+				628FC92A2BAB0CB300D01A5E /* ApiManager.swift */,
+				622293FB2BAC3DB70062B4CD /* KeyChainManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		628FC91E2BAA024B00D01A5E /* EditPage */ = {
+			isa = PBXGroup;
+			children = (
+				628FC9212BAA02A000D01A5E /* EditScreenViewController.swift */,
+				628FC91F2BAA028900D01A5E /* EditScreenView.swift */,
+				628FC9232BAA02F200D01A5E /* EditScreenViewModel.swift */,
+			);
+			name = EditPage;
+			sourceTree = "<group>";
+		};
+		628FC9252BAA071300D01A5E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				628FFB3D2B97998500AC51CF /* SettingViewController.swift */,
+				628FFB3F2B97999400AC51CF /* SettingView.swift */,
+				628FFB412B9799AA00AC51CF /* SettingViewModel.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		628FFAFE2B96477300AC51CF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				628FFAFC2B96476E00AC51CF /* GeneralProfileTableViewCell.swift */,
+				628FFB542B9F939300AC51CF /* SecurityTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -105,6 +210,7 @@
 		628FFB2E2B97395800AC51CF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				628FC9162BA9AC5900D01A5E /* Views */,
 				628FFB2F2B97397000AC51CF /* Extensions */,
 				628FFB322B9739DE00AC51CF /* Resources.swift */,
 			);
@@ -120,14 +226,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		628FFB362B9745C000AC51CF /* Controllers */ = {
+		628FFB362B9745C000AC51CF /* BaseControllers */ = {
 			isa = PBXGroup;
 			children = (
 				628FFB2C2B97383900AC51CF /* TabBarController.swift */,
 				628FFB342B97430F00AC51CF /* NavBarController.swift */,
 				628FFB372B97477600AC51CF /* BaseViewController.swift */,
 			);
-			path = Controllers;
+			path = BaseControllers;
 			sourceTree = "<group>";
 		};
 		628FFB432B979C2500AC51CF /* Main */ = {
@@ -135,6 +241,7 @@
 			children = (
 				62A4D9D42B8B365500609449 /* ProfileViewController.swift */,
 				62A391382B95CD18005C9CCB /* ProfileView.swift */,
+				62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -142,8 +249,8 @@
 		628FFB442B979C2F00AC51CF /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				628FFB3D2B97998500AC51CF /* SettingViewController.swift */,
-				628FFB3F2B97999400AC51CF /* SettingView.swift */,
+				628FC9252BAA071300D01A5E /* Main */,
+				628FC91E2BAA024B00D01A5E /* EditPage */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -153,6 +260,7 @@
 			children = (
 				628FFB472B97A18700AC51CF /* NotificationViewController.swift */,
 				628FFB4D2B97A1C900AC51CF /* NotificationView.swift */,
+				628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -162,6 +270,7 @@
 			children = (
 				628FFB492B97A1A200AC51CF /* FavoritesViewController.swift */,
 				628FFB4B2B97A1B800AC51CF /* FavoritesView.swift */,
+				628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -170,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				62A3913D2B95CD57005C9CCB /* Views */,
-				62A3913E2B95CD62005C9CCB /* ViewModels */,
 				62A3913F2B95CD7C005C9CCB /* Model.swift */,
 				628FFAFE2B96477300AC51CF /* Cells */,
 			);
@@ -181,51 +289,45 @@
 			isa = PBXGroup;
 			children = (
 				628FFB432B979C2500AC51CF /* Main */,
-				628FFB462B97A14D00AC51CF /* Favorites */,
 				628FFB452B97A13A00AC51CF /* Notification */,
 				628FFB442B979C2F00AC51CF /* Setting */,
+				628FFB462B97A14D00AC51CF /* Favorites */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		62A3913E2B95CD62005C9CCB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				62A3913B2B95CD44005C9CCB /* ProfileViewModel.swift */,
-				628FFB412B9799AA00AC51CF /* SettingViewModel.swift */,
-				628FFB4F2B97A1DC00AC51CF /* NotificationViewModel.swift */,
-				628FFB522B97A22F00AC51CF /* FavoritesViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		62A4D9C42B8B365400609449 = {
 			isa = PBXGroup;
 			children = (
-				628FFB2E2B97395800AC51CF /* Helpers */,
 				62A4D9CF2B8B365500609449 /* MyFinanceApp */,
-				62A4D9CE2B8B365500609449 /* Products */,
+				69D6F11A592657B7F0CB4BEE /* Pods */,
+				409C82F3D3B9DFC48AC0F4CC /* Frameworks */,
+				622293F32BAC12270062B4CD /* MyFinanceApp.app */,
 			);
-			sourceTree = "<group>";
-		};
-		62A4D9CE2B8B365500609449 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				62A4D9CD2B8B365500609449 /* MyFinanceApp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		62A4D9CF2B8B365500609449 /* MyFinanceApp */ = {
 			isa = PBXGroup;
 			children = (
+				622293F42BAC1CA60062B4CD /* Login */,
+				628FFB2E2B97395800AC51CF /* Helpers */,
+				628FC9192BA9B1A700D01A5E /* DataManager */,
 				628FFB2B2B97334700AC51CF /* Application */,
 				62A3913A2B95CD1F005C9CCB /* Profile Screens */,
 				628FFB2A2B9732D900AC51CF /* SupportingFiles */,
 				62A4D9D92B8B365500609449 /* MyFinanceApp.xcdatamodeld */,
-				628FFB362B9745C000AC51CF /* Controllers */,
+				628FFB362B9745C000AC51CF /* BaseControllers */,
 			);
 			path = MyFinanceApp;
+			sourceTree = "<group>";
+		};
+		69D6F11A592657B7F0CB4BEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C689F27BA485AD4F722F3F3 /* Pods-MyFinanceApp.debug.xcconfig */,
+				96C35C2A0D277B4441E99A09 /* Pods-MyFinanceApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,17 +337,27 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62A4D9E42B8B365700609449 /* Build configuration list for PBXNativeTarget "MyFinanceApp" */;
 			buildPhases = (
+				090389126C182A415273BE86 /* [CP] Check Pods Manifest.lock */,
 				62A4D9C92B8B365500609449 /* Sources */,
 				62A4D9CA2B8B365500609449 /* Frameworks */,
 				62A4D9CB2B8B365500609449 /* Resources */,
+				4FEC5B8BED4A4CC0D3DC5939 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MyFinanceApp;
+			packageProductDependencies = (
+				628FC92D2BAB0D2100D01A5E /* FirebaseAnalytics */,
+				628FC9312BAB0D2100D01A5E /* FirebaseAnalyticsSwift */,
+				628FC9332BAB0D2100D01A5E /* FirebaseAnalyticsWithoutAdIdSupport */,
+				628FC9352BAB0D2100D01A5E /* FirebaseAppCheck */,
+				628FC9382BAB0D4300D01A5E /* FirebaseFirestore */,
+				628FC93A2BAB0D5000D01A5E /* FirebaseStorage */,
+			);
 			productName = MyFinanceApp;
-			productReference = 62A4D9CD2B8B365500609449 /* MyFinanceApp.app */;
+			productReference = 622293F32BAC12270062B4CD /* MyFinanceApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -272,7 +384,10 @@
 				Base,
 			);
 			mainGroup = 62A4D9C42B8B365400609449;
-			productRefGroup = 62A4D9CE2B8B365500609449 /* Products */;
+			packageReferences = (
+				628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 62A4D9C42B8B365400609449;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -293,19 +408,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		090389126C182A415273BE86 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyFinanceApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FEC5B8BED4A4CC0D3DC5939 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFinanceApp/Pods-MyFinanceApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFinanceApp/Pods-MyFinanceApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyFinanceApp/Pods-MyFinanceApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		62A4D9C92B8B365500609449 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				628FFB4C2B97A1B800AC51CF /* FavoritesView.swift in Sources */,
+				628FC9242BAA02F200D01A5E /* EditScreenViewModel.swift in Sources */,
+				628FFB552B9F939300AC51CF /* SecurityTableViewCell.swift in Sources */,
 				628FFB382B97477600AC51CF /* BaseViewController.swift in Sources */,
 				628FFB4E2B97A1C900AC51CF /* NotificationView.swift in Sources */,
 				62A391402B95CD7C005C9CCB /* Model.swift in Sources */,
 				62A3913C2B95CD44005C9CCB /* ProfileViewModel.swift in Sources */,
+				628FC91D2BA9D20E00D01A5E /* SecurityCardSettingView.swift in Sources */,
 				628FFAFD2B96476E00AC51CF /* GeneralProfileTableViewCell.swift in Sources */,
 				628FFB312B97399100AC51CF /* UIColor + ext.swift in Sources */,
+				628FC9272BAA0FAB00D01A5E /* ChangeDataUserCardView.swift in Sources */,
+				628FC9202BAA028900D01A5E /* EditScreenView.swift in Sources */,
 				628FFB402B97999400AC51CF /* SettingView.swift in Sources */,
+				622293FA2BAC1D1B0062B4CD /* LoginViewModel.swift in Sources */,
 				628FFB502B97A1DC00AC51CF /* NotificationViewModel.swift in Sources */,
 				628FFB532B97A22F00AC51CF /* FavoritesViewModel.swift in Sources */,
 				628FFB422B9799AA00AC51CF /* SettingViewModel.swift in Sources */,
@@ -314,12 +477,20 @@
 				62A4D9DB2B8B365500609449 /* MyFinanceApp.xcdatamodeld in Sources */,
 				628FFB4A2B97A1A200AC51CF /* FavoritesViewController.swift in Sources */,
 				62A4D9D52B8B365500609449 /* ProfileViewController.swift in Sources */,
+				628FC9222BAA02A000D01A5E /* EditScreenViewController.swift in Sources */,
+				622293FE2BAC80870062B4CD /* User.swift in Sources */,
 				628FFB3A2B9748F700AC51CF /* UIView + ext.swift in Sources */,
 				628FFB352B97430F00AC51CF /* NavBarController.swift in Sources */,
 				62A391392B95CD18005C9CCB /* ProfileView.swift in Sources */,
 				628FFB482B97A18700AC51CF /* NotificationViewController.swift in Sources */,
 				628FFB332B9739DE00AC51CF /* Resources.swift in Sources */,
+				628FC92B2BAB0CB300D01A5E /* ApiManager.swift in Sources */,
 				62A4D9D12B8B365500609449 /* AppDelegate.swift in Sources */,
+				628FC9182BA9AC9F00D01A5E /* GeneralCardMainProfileView.swift in Sources */,
+				622293FC2BAC3DB70062B4CD /* KeyChainManager.swift in Sources */,
+				622293F82BAC1CC70062B4CD /* LoginViewController.swift in Sources */,
+				622293F62BAC1CB90062B4CD /* LoginView.swift in Sources */,
+				628FC91B2BA9B1BD00D01A5E /* DataManager.swift in Sources */,
 				62A4D9D32B8B365500609449 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +546,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -438,7 +609,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -459,6 +630,7 @@
 		};
 		62A4D9E52B8B365700609449 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C689F27BA485AD4F722F3F3 /* Pods-MyFinanceApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -486,6 +658,7 @@
 		};
 		62A4D9E62B8B365700609449 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96C35C2A0D277B4441E99A09 /* Pods-MyFinanceApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -533,6 +706,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		628FC92D2BAB0D2100D01A5E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		628FC9312BAB0D2100D01A5E /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		628FC9332BAB0D2100D01A5E /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		628FC9352BAB0D2100D01A5E /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		628FC9382BAB0D4300D01A5E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		628FC93A2BAB0D5000D01A5E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 628FC92C2BAB0D2100D01A5E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		62A4D9D92B8B365500609449 /* MyFinanceApp.xcdatamodeld */ = {

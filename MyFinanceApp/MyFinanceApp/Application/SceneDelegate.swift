@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 25.02.2024.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -21,9 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 
+//        let vm = LoginViewModel()
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
 //        window = UIWindow(windowScene: windowScene)
-//        let navVC = UINavigationController(rootViewController: ProfileViewController())
-//        window?.rootViewController = navVC
+//        window?.rootViewController = LoginViewController(viewModel: vm)
 //        window?.makeKeyAndVisible()
     }
 
