@@ -36,13 +36,13 @@ class EditScreenView: UIView {
         return stackView
     }()
 
-    private let editAvatarbutton: UIButton = {
-        let action = UIAction {_ in 
-            
-        }
-        let button = UIButton(type: .system, primaryAction: action)
-        button.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
-    }()
+//    private let editAvatarbutton: UIButton = {
+//        let action = UIAction {_ in 
+//            
+//        }
+////        let button = UIButton(type: .system, primaryAction: action)
+////        button.setImage(, for: )
+//    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
