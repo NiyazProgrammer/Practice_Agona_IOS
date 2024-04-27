@@ -13,6 +13,9 @@ protocol SettingViewForButtonDelegate: AnyObject {
     func didPressButtonEdit()
 }
 class SettingView: UIView {
+    weak var delegate: SettingViewDelegate?
+    weak var editButtondelegate: SettingViewForButtonDelegate?
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -30,7 +33,7 @@ class SettingView: UIView {
     }()
 
     lazy var imageUser: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "steveJob"))
+        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 10
@@ -41,7 +44,6 @@ class SettingView: UIView {
     lazy var nameUser: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Steve Job"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 0
@@ -72,7 +74,7 @@ class SettingView: UIView {
         let action = UIAction { [weak self] _ in
             self?.editButtondelegate?.didPressButtonEdit()
         }
-        let button = UIButton(type: .system,primaryAction: action)
+        let button = UIButton(type: .system, primaryAction: action)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Edit", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -100,9 +102,6 @@ class SettingView: UIView {
         stackView.spacing = 10
         return stackView
     }()
-    
-    weak var delegate: SettingViewDelegate?
-    weak var editButtondelegate: SettingViewForButtonDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,43 +120,6 @@ class SettingView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupLayout() {
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-
-            imageUser.topAnchor.constraint(equalTo:  contentView.topAnchor, constant: 20),
-            imageUser.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor, constant: 20),
-            imageUser.widthAnchor.constraint(equalToConstant: 60),
-            imageUser.heightAnchor.constraint(equalToConstant: 60),
-
-            nameAndEmailStackView.topAnchor.constraint(equalTo: imageUser.topAnchor),
-            nameAndEmailStackView.leadingAnchor.constraint(equalTo: imageUser.trailingAnchor, constant: 15),
-            nameAndEmailStackView.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor, constant: -20),
-
-            editButton.topAnchor.constraint(equalTo: imageUser.bottomAnchor, constant: 20),
-            editButton.leadingAnchor.constraint(equalTo:  contentView.leadingAnchor, constant: 20),
-            editButton.trailingAnchor.constraint(equalTo:  contentView.trailingAnchor, constant: -20),
-            editButton.heightAnchor.constraint(equalToConstant: 30),
-
-            securityLabel.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 40),
-            securityLabel.leadingAnchor.constraint(equalTo: editButton.leadingAnchor),
-
-            securityCardsSV.topAnchor.constraint(equalTo: securityLabel.bottomAnchor, constant: 20),
-            securityCardsSV.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            securityCardsSV.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            securityCardsSV.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
     }
 
     private func createCard(numbersCard: Int, withTapHandler tapHandler: Selector) {
@@ -193,5 +155,48 @@ class SettingView: UIView {
 
     @objc func handlePushNotificationCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressPushNotificationCard()
+    }
+
+    func confugure(user: User) {
+        nameUser.text = (user.firstName ?? "") + " " + (user.lastName ?? "")
+        emailUser.text = user.email
+        imageUser.image = user.avatarImage
+    }
+
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+
+            imageUser.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            imageUser.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            imageUser.widthAnchor.constraint(equalToConstant: 60),
+            imageUser.heightAnchor.constraint(equalToConstant: 60),
+
+            nameAndEmailStackView.topAnchor.constraint(equalTo: imageUser.topAnchor),
+            nameAndEmailStackView.leadingAnchor.constraint(equalTo: imageUser.trailingAnchor, constant: 15),
+            nameAndEmailStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+
+            editButton.topAnchor.constraint(equalTo: imageUser.bottomAnchor, constant: 20),
+            editButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            editButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            editButton.heightAnchor.constraint(equalToConstant: 30),
+
+            securityLabel.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 40),
+            securityLabel.leadingAnchor.constraint(equalTo: editButton.leadingAnchor),
+
+            securityCardsSV.topAnchor.constraint(equalTo: securityLabel.bottomAnchor, constant: 20),
+            securityCardsSV.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            securityCardsSV.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            securityCardsSV.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
 }

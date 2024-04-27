@@ -5,6 +5,7 @@ enum KeychainError: Error {
     case unknown(status: OSStatus)
 }
 
+// MARK: Скорее всего откожуст от встроенного KeyChain и буду использовать библиотеку
 final class KeyChainManager {
     static func save(password: Data, account: String) throws -> String {
         let query: [CFString: Any] = [

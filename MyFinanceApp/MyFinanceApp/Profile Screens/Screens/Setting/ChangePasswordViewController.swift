@@ -1,29 +1,42 @@
-//
-//  ChangePasswordViewController.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 01.04.2024.
-//
-
 import UIKit
 
-class ChangePasswordViewController: UIViewController {
+class ChangePasswordViewController: BaseViewController {
+    private let changePasswordView = ChangePasswordView(frame: .zero)
+    private var changePasswordViewModel: ChangePasswordViewModel?
+
+    init(changePasswordViewModel: ChangePasswordViewModel? = nil) {
+        self.changePasswordViewModel = changePasswordViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        view = changePasswordView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = "Изменить пароль"
+        createChangeDataCards()
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func createChangeDataCards() {
+        let dataManager = DataManager()
+        for card in dataManager.changePasswordUsersCards {
+            card.dataTextField.delegate = self
+            changePasswordView.dataCardsSV.addArrangedSubview(card)
+        }
     }
-    */
+}
 
+extension ChangePasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        MARK: Не завершенная реализация
+//        for card in changePasswordView.dataCardsSV.arrangedSubviews {
+//            (card as? ChangePasswordCard)?.dataTextField.resignFirstResponder()
+//        }
+        return true
+    }
 }

@@ -1,8 +1,10 @@
-//
-//  News.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 14.04.2024.
-//
+import UIKit
 
-import Foundation
+struct News {
+    let id: Int
+    let shortDescription: String
+    let date: Date
+    var picture: UIImage
+    var likesCount: Int
+    var likedByUsers: [User]
+}

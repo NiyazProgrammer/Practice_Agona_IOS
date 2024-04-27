@@ -8,8 +8,13 @@
 import UIKit
 
 class DescriptionNotificatiionViewModel {
-    var descriptionNotificatiion: String
-    init() {
-        
+    private var descriptionNotificatiion: Notification
+
+    init(descriptionNotificatiion: Notification) {
+        self.descriptionNotificatiion = descriptionNotificatiion
+    }
+
+    func setDescriptionNotification() -> Notification {
+        return descriptionNotificatiion
     }
 }

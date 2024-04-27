@@ -1,16 +1,21 @@
 import UIKit
 import SnapKit
+
 private enum NumberCard {
     static let setting = 0
     static let favorites = 1
     static let notification = 2
 }
+
 protocol ProfileViewDelegate: AnyObject {
     func didPressSettingCard()
     func didPressFavoritesCard()
     func didPressNotificationCard()
 }
+
 class ProfileView: UIView {
+    weak var delegate: ProfileViewDelegate?
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -27,17 +32,16 @@ class ProfileView: UIView {
         return contentView
     }()
 
-    lazy var backgraoundImageProfile: UIImageView = {
+    private lazy var backgraoundImageProfile: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "backgroundImageProfile")
         return imageView
     }()
 
-    lazy var profileImage: UIImageView = {
+    private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "steveJob")
         imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 7.0
@@ -46,17 +50,16 @@ class ProfileView: UIView {
         return imageView
     }()
     
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Steve Job"
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.sizeToFit()
         return label
     }()
 
-    lazy var expenseLabel: UILabel = {
+    private lazy var expenseLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Расход"
@@ -65,7 +68,7 @@ class ProfileView: UIView {
         return label
     }()
 
-    lazy var expenseNumberLabel: UILabel = {
+    private lazy var expenseNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "10000"
@@ -74,7 +77,7 @@ class ProfileView: UIView {
         return label
     }()
 
-    lazy var incomeLabel: UILabel = {
+    private lazy var incomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Доход"
@@ -83,7 +86,7 @@ class ProfileView: UIView {
         return label
     }()
 
-    lazy var incomeNumberLabel: UILabel = {
+    private lazy var incomeNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "10000"
@@ -92,7 +95,7 @@ class ProfileView: UIView {
         return label
     }()
 
-    lazy var generalLabel: UILabel = {
+    private lazy var generalLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Главная"
@@ -121,8 +124,6 @@ class ProfileView: UIView {
         return stackView
     }()
 
-    weak var delegate: ProfileViewDelegate?
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -138,7 +139,6 @@ class ProfileView: UIView {
         createAllCards()
         setupContrait()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -186,6 +186,11 @@ class ProfileView: UIView {
 
     @objc func handleNotificationCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressNotificationCard()
+    }
+
+    func configure(user: User) {
+        nameLabel.text = (user.firstName ?? "") + " " + (user.lastName ?? "")
+        profileImage.image = user.avatarImage
     }
 
     func setupContrait() {

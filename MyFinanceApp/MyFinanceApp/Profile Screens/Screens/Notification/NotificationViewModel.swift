@@ -1,12 +1,13 @@
-//
-//  Notification.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 05.03.2024.
-//
-
 import Foundation
 
 class NotificationViewModel {
-    
+    private var notifications: [Notification]
+
+    init(notifications: [Notification]) {
+        self.notifications = notifications
+    }
+
+    func updateNotifications() -> [Notification] {
+        return notifications
+    }
 }

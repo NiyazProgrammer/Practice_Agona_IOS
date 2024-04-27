@@ -36,11 +36,9 @@ class GeneralCardMainProfileView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
     init(nameCard: String, imageCard: UIImage, colorLogo: UIColor) {
         super.init(frame: .zero)
         backgroundColor = .clear
-        
         nameCardLabel.text = nameCard
         self.imageCard.image = imageCard
         conteynerImageView.backgroundColor = colorLogo
@@ -56,8 +54,7 @@ class GeneralCardMainProfileView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupLayout() {
+    private func setupLayout() {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor),

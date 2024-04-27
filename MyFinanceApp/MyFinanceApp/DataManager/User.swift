@@ -1,9 +1,11 @@
-import Foundation
+import UIKit
 
 struct User {
-    let name: String?
-    let lastName: String?
-    let middleName: String?
-    let email: String?
-    let nickName: String?
+    var id: Int?
+    var email: String?
+    var firstName: String?
+    var lastName: String?
+    var middleName: String?
+    var userName: String?
+    var avatarImage: UIImage?
 }

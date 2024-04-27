@@ -1,8 +1,7 @@
-//
-//  Notification.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 10.04.2024.
-//
+import UIKit
 
-import Foundation
+struct Notification {
+    let description: String
+    let image: UIImage?
+    let dateInfo: Date
+}

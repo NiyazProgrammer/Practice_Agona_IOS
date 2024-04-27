@@ -7,9 +7,6 @@
 
 import UIKit
 
-protocol DescriptionNotificatiionViewControllerDelegate: NSObject {
-    func setNotificationsInfo(info: String)
-}
 class DescriptionNotificatiionViewController: BaseViewController {
     private let descriptionView = DescriptionNotificatiionView(frame: .zero)
     private var viewModel: DescriptionNotificatiionViewModel
@@ -18,17 +15,16 @@ class DescriptionNotificatiionViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func loadView() {
         view = descriptionView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let notification = viewModel.setDescriptionNotification()
+        descriptionView.configure(with: notification)
     }
-
-
 }

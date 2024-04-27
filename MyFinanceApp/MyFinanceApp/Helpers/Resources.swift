@@ -3,13 +3,9 @@ import UIKit
 enum Resources {
     enum Colors {
         static let active = UIColor(hexString: "#373062")
-
         static let mainColorApp = UIColor(hexString: "#373062")
-
         static let inactive  = UIColor(hexString: "#bdbdbd")
-
         static let separator = UIColor(hexString: "bdbdbd")
-
         static let backgroundViews = UIColor(hexString: "#f7f7f7")
 
         enum GeneralCardsProfile {
@@ -62,9 +58,21 @@ enum Resources {
                 static let nameUser = "@User12345"
             }
         }
+
+        enum ChangePasswordCards {
+            enum PlaceholderCard {
+                static let currentPassword = "Ваш текущий пароль"
+                static let newPassword = "Придумайте новый пароль"
+                static let confirmNewPassword = "Подтвердите новый пароль"
+            }
+        }
+
+        static let all: [String] = ["Лента", "Валюта"]
     }
 
     enum Images {
+
+        static let mainAppIcon = UIImage(named: "LaunchImage")
 
         enum TabBar {
             static let myMoney = UIImage(named: "general")
@@ -86,12 +94,12 @@ enum Resources {
             static let notification = UIImage(named: "notificationSecurity")
             static let rightArrow = UIImage(named: "rightArrow")
         }
-        enum ChangeDataCards { 
+
+        enum ChangeDataCards {
             static let editPencil = UIImage(named: "editPencil")
             static let editCamera = UIImage(named: "editCamera")
             static let defaultAvatar = UIImage(named: "defaultAvatar")
         }
-
     }
 
     enum Fonts {
