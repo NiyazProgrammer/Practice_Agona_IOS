@@ -1,0 +1,15 @@
+import Foundation
+import Combine
+
+class SettingViewModel {
+    @Published var currentUser: User?
+    var usersData: UserDataService?
+
+    init(usersData: UserDataService) {
+        self.usersData = usersData
+    }
+
+    func setCurrentUser() {
+        currentUser = usersData?.getCurrentUser()
+    }
+}
