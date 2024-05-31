@@ -7,7 +7,6 @@ enum SetImageAvatarUserError: Error {
     case setImageError
 }
 class APIManager {
-
     static let shared = APIManager()
 
     private init() { }
@@ -23,55 +22,61 @@ class APIManager {
     func getUser(collection: String, docName: String, completion: @escaping (User?) -> Void) {
         let dataBase = configureFB()
         dataBase.collection(collection).document(docName).getDocument { document, error in
-            guard error == nil else { completion(nil); return }
+            guard let document = document, document.exists, error == nil else {
+                completion(nil)
+                return
+            }
 
-            let user = User(
-                email: document?.get("email") as? String,
-                firstName: document?.get("firstName") as? String,
-                lastName: document?.get("lastName") as? String,
-                middleName: document?.get("middleName") as? String,
-                userName: document?.get("nickName") as? String)
-            completion(user)
+            do {
+                let user = try document.data(as: User.self)
+                completion(user)
+            } catch {
+                completion(nil)
+            }
         }
     }
 
-    func getImage(imageName: String, completion: @escaping (UIImage) -> Void) {
+    func getImage(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: imageUrl) else {
+            completion(nil)
+            return
+        }
+
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            switch result {
+            case .success(let imageResult):
+                completion(imageResult.image)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
+    // swiftlint:disable force_unwrapping
+    func setImageAvatar(imageData: Data, completion: @escaping ((Result<String, Error>) -> Void)) {
         let storage = Storage.storage()
-        let reference = storage.reference()
-        let pathRef = reference.child("UsersImage")
+        let currentUser = UserDataManager.shared.getCurrentUser()
+        let storageRef = storage.reference().child("UsersImage").child((currentUser.id ?? "") + ".png")
 
-        let image = UIImage(named: "errorImage")
-
-        let fileRef = pathRef.child(imageName + ".png")
-        fileRef.downloadURL { url, error in
-            guard let url = url, error == nil else {
-                completion(image ?? UIImage())
+        storageRef.putData(imageData, metadata: nil) { _, error in
+            guard error == nil else {
+                completion(.failure(error!))
                 return
             }
-            KingfisherManager.shared.retrieveImage(with: url) { result in
-                switch result {
-                case .success(let imageResult):
-                    let loadedImage = imageResult.image
-                    completion(loadedImage)
-                case .failure(let error):
-                    print("Failed to load image: \(error)")
+
+            storageRef.downloadURL { url, error in
+                guard let downloadURL = url, error == nil else {
+                    completion(.failure(error!))
+                    return
                 }
+                completion(.success(downloadURL.absoluteString))
             }
         }
     }
 
-    func setImageAvatar(imageData: Data, completion: @escaping ((Result<Data, Error>) -> Void)) {
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let pathRef = storageRef.child("UsersImage/file.png")
-
-        pathRef.putData(imageData) { _, error in
-            guard let error = error else {
-                completion(.success(imageData))
-                return
-            }
-            print("Error uploading image: \(error)")
-            completion(.failure(error))
+    func updateUserAvatarUrl(userId: String, imageUrl: String, completion: @escaping (Bool) -> Void) {
+        let dataBase = configureFB()
+        dataBase.collection("users").document(userId).updateData(["avatarImageUrl": imageUrl]) { error in
+            completion(error == nil)
         }
     }
 }

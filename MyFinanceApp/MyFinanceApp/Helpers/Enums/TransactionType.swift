@@ -1,8 +1,6 @@
-//
-//  TransactionType.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 20.05.2024.
-//
-
 import Foundation
+
+enum TransactionType: String, CaseIterable, Codable {
+    case expense = "Расход"
+    case income = "Доход"
+}

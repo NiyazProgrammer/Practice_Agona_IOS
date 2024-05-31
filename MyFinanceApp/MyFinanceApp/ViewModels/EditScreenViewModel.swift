@@ -3,9 +3,9 @@ import Combine
 
 class EditScreenViewModel {
     @Published var currentUser: User?
-    var usersData: UserDataService?
+    var usersData: UserDataServiceProtocol?
 
-    init(usersData: UserDataService) {
+    init(usersData: UserDataServiceProtocol) {
         self.usersData = usersData
         setupBinding()
     }

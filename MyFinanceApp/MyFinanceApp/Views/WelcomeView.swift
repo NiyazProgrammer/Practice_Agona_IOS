@@ -1,20 +1,36 @@
-//
-//  WelcomeView.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 21.04.2024.
-//
-
 import UIKit
 
+// MARK: Можно добавить анимацию в качестве приветствия или картинку
 class WelcomeView: UIView {
+    var switchToAuthScreen: (() -> Void)?
+    lazy var signInBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setTitle("Sign in", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        btn.backgroundColor = .white
+        btn.layer.cornerRadius = 20
+        btn.clipsToBounds = true
+        let action = UIAction { [weak self] _ in
+            self?.switchToAuthScreen?()
+        }
+        btn.addAction(action, for: .touchUpInside)
+        return btn
+    }()
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        addSubview(signInBtn)
+
+        signInBtn.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-30)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(200)
+        }
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

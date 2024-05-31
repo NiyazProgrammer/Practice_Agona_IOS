@@ -15,7 +15,7 @@ protocol ProfileViewDelegate: AnyObject {
 
 class ProfileView: UIView {
     weak var delegate: ProfileViewDelegate?
-    
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -189,8 +189,12 @@ class ProfileView: UIView {
     }
 
     func configure(user: User) {
-        nameLabel.text = (user.firstName ?? "") + " " + (user.lastName ?? "")
-        profileImage.image = user.avatarImage
+        nameLabel.text = user.userName
+        if let avatarImageUrl = user.avatarImageUrl, let url = URL(string: avatarImageUrl) {
+            profileImage.kf.setImage(with: url)
+        } else {
+            profileImage.image = UIImage(named: "defaultAvatar")
+        }
     }
 
     func setupContrait() {

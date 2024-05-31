@@ -1,11 +1,9 @@
 import UIKit
 
-struct User {
-    var id: Int?
-    var email: String?
-    var firstName: String?
-    var lastName: String?
-    var middleName: String?
-    var userName: String?
-    var avatarImage: UIImage?
+struct User: Codable {
+    var id: String?
+    var email: String
+    var userName: String
+    var avatarImageUrl: String?
+    var password: String
 }

@@ -43,8 +43,7 @@ class DataManager {
     let changeDataUsersCards: [ChangeDataUserCardView] = [
         ChangeDataUserCardView(
             cardName: Resources.Strings.ChangeDataCards.TitleCard.lastName,
-            textPlaceholder: Resources.Strings.ChangeDataCards.PlaceholderCard.lastName
-        ),
+            textPlaceholder: Resources.Strings.ChangeDataCards.PlaceholderCard.lastName),
         ChangeDataUserCardView(
             cardName: Resources.Strings.ChangeDataCards.TitleCard.firstName,
             textPlaceholder: Resources.Strings.ChangeDataCards.PlaceholderCard.firstName
@@ -72,11 +71,5 @@ class DataManager {
         )
     ]
 
-    var notifications: [Notification] = [
-        .init(description: "Push 1", image: nil, dateInfo: Date.now),
-        .init(description: "Push 2", image: nil, dateInfo: Date.now),
-        .init(description: "Push 3", image: nil, dateInfo: Date.now),
-        .init(description: "Push 4", image: nil, dateInfo: Date.now),
-        .init(description: "Push 5", image: nil, dateInfo: Date.now)
-    ]
+    var notifications: [Notification] = ["Push 1", "Push 2", "Push 3", "Push 4", "Push 5"].map { Notification(description: $0, image: nil, dateInfo: Date.now) }
 }

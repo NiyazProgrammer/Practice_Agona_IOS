@@ -75,11 +75,11 @@ enum Resources {
         static let mainAppIcon = UIImage(named: "LaunchImage")
 
         enum TabBar {
-            static let myMoney = UIImage(named: "general")
-            static let budget = UIImage(named: "budget")
-            static let lenta = UIImage(named: "lenta")
-            static let courses = UIImage(named: "courses")
-            static let profile = UIImage(named: "profile")
+            static let home = UIImage(systemName: "house")
+            static let budget = UIImage(systemName: "creditcard")
+            static let lenta = UIImage(systemName: "newspaper")
+            static let courses = UIImage(systemName: "chart.bar.xaxis")
+            static let profile = UIImage(systemName: "person.crop.circle")
         }
 
         enum GeneralCardsProfile {

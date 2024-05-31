@@ -4,8 +4,7 @@ class ImagePicker: NSObject, UIImagePickerControllerDelegate, UINavigationContro
 
     private var imagePickerController: UIImagePickerController?
 
-    func showImagePicker(
-        in viewController: UIViewController) {
+    func showImagePicker(in viewController: UIViewController) {
         imagePickerController = UIImagePickerController()
         imagePickerController?.delegate = self
         imagePickerController?.allowsEditing = false
@@ -14,26 +13,13 @@ class ImagePicker: NSObject, UIImagePickerControllerDelegate, UINavigationContro
         }
     }
 
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            picker.dismiss(animated: true)
-            guard let image = info[.originalImage] as? UIImage else {
-                return
-        }
-            guard let imageData = image.pngData() else { return }
-            APIManager.shared.setImageAvatar(imageData: imageData) { result in
-                switch result {
-                case .success(_):
-                    UserDataManager.shared.setAvatarImageUser(image: image )
-                case .failure(_):
-                    break
-                }
-            }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else { return }
+        UserDataManager.shared.setAvatarImageUser(image: image)
     }
 
-    internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true)
     }
 }
-

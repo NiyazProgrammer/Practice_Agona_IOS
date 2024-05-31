@@ -24,23 +24,28 @@ final class TabBarController: UITabBarController {
         tabBar.barTintColor = .white
         tabBar.backgroundColor = .white
 
-        let myMoneyController = UIViewController()
-        let lentaController = UIViewController()
-        let coursesController = UIViewController()
-        let budgetController = UIHostingController(rootView: MyBudgetView())
+        let homeController = HomeViewController()
+        homeController.navigationItem.largeTitleDisplayMode = .always
 
-        let viewModel = ProfileViewModel(usersData: UserDataManager.shared)
-        let profileController = ProfileViewController(viewModel: viewModel)
+        let lentaController = LentaViewController()
+        let coursesController = CoursesViewController()
 
-        let myMoneyNavigation = NavBarController(rootViewController: myMoneyController)
+        let myBudgetViewModel = MyBudgetViewModel(repository: BankCardRepositoryImpl(localService: LocalBankCardService(), remoteService: RemoteBankCardService()))
+        let budgetController = UIHostingController(rootView: MyBudgetView(model: myBudgetViewModel))
+//        let budgetController = UIHostingController(rootView: MyBudgetView())
+        let profileViewModel = ProfileViewModel(usersData: UserDataManager.shared)
+        let profileController = ProfileViewController(viewModel: profileViewModel)
+
+        let homeNavigation = NavBarController(rootViewController: homeController)
+        homeNavigation.navigationBar.prefersLargeTitles = true
         let budgetNavigation = NavBarController(rootViewController: budgetController)
         let lentaNavigation = NavBarController(rootViewController: lentaController)
         let coursesNavigation = NavBarController(rootViewController: coursesController)
         let profileNavigation = NavBarController(rootViewController: profileController)
 
-        myMoneyNavigation.tabBarItem = UITabBarItem(
+        homeNavigation.tabBarItem = UITabBarItem(
             title: Resources.Strings.TabBar.myMoney,
-            image: Resources.Images.TabBar.myMoney,
+            image: Resources.Images.TabBar.home,
             tag: Tabs.myMoney.rawValue)
         budgetNavigation.tabBarItem = UITabBarItem(
             title: Resources.Strings.TabBar.budget,
@@ -60,7 +65,7 @@ final class TabBarController: UITabBarController {
             tag: Tabs.profile.rawValue)
 
         setViewControllers([
-            myMoneyNavigation,
+            homeNavigation,
             budgetNavigation,
             lentaNavigation,
             coursesNavigation,

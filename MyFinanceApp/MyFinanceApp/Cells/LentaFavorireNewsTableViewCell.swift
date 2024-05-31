@@ -2,21 +2,16 @@ import UIKit
 import SnapKit
 
 class LentaFavorireNewsTableViewCell: UITableViewCell {
-    private lazy var appAvatar: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "LaunchImage"))
-        return imageView
-    }()
 
-    private lazy var favoriteImage: UIImageView = {
+    private let appAvatar = UIImageView(image: UIImage(named: "LaunchImage"))
+
+    private let favoriteImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "favoriteDidTap"))
         imageView.tintColor = UIColor.orange
         return imageView
     }()
 
-    private lazy var likeImage: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "like"))
-        return imageView
-    }()
+    private let likeImage = UIImageView(image: UIImage(named: "like"))
 
     private lazy var newsImage: UIImageView = {
         let imageView = UIImageView()
@@ -24,7 +19,7 @@ class LentaFavorireNewsTableViewCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var appNameTitle: UILabel = {
+    private let appNameTitle: UILabel = {
         let label = UILabel()
         label.text = "My.Finance"
         label.font = .systemFont(ofSize: 16, weight: .bold)
@@ -32,14 +27,14 @@ class LentaFavorireNewsTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var datePublisher: UILabel = {
+    private let datePublisher: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = .systemFont(ofSize: 10)
         return label
     }()
 
-    private lazy var shortDescriptionNews: UILabel = {
+    private let shortDescriptionNews: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.font = .systemFont(ofSize: 20)

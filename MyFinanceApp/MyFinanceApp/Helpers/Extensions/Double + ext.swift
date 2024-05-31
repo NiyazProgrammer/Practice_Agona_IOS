@@ -1,8 +1,7 @@
-//
-//  Double + ext.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 01.05.2024.
-//
-
 import Foundation
+
+extension Double {
+    func roundedTo2Digits() -> Double {
+        return (self * 100).rounded() / 100
+    }
+}

@@ -66,7 +66,7 @@ class ChangeDataUserCardView: UIView {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            cardView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            cardView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             cardView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 70),
 

@@ -7,15 +7,24 @@ class SettingViewController: BaseViewController {
     private var cancellable: Set<AnyCancellable> = []
 
     private var currentUser: User?
+
     init(viewModel: SettingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func loadView() {
         view = settingView
+
+        settingView.exitAccount = { [weak self] in
+            Task {
+                await self?.viewModel.exitAccount()
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -29,19 +38,26 @@ class SettingViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.setCurrentUser()
-        settingView.confugure(user: currentUser ?? User())
+        if let user = currentUser {
+            settingView.configure(user: user)
+        }
     }
 
     private func setupBindings() {
-        viewModel.$currentUser.sink { user in
-            self.currentUser = user
-        }.store(in: &cancellable)
+        viewModel.$currentUser
+            .sink { [weak self] user in
+                self?.currentUser = user
+                if let user = user {
+                    self?.settingView.configure(user: user)
+                }
+            }
+            .store(in: &cancellable)
     }
 }
 
 extension SettingViewController: SettingViewDelegate {
     func didPressAppsPasswordCard() {
-        //
+        // Implement the logic for Apps Password Card tap
     }
 
     func didPressChangePasswordCard() {
@@ -51,7 +67,7 @@ extension SettingViewController: SettingViewDelegate {
     }
 
     func didPressPushNotificationCard() {
-        //
+        // Implement the logic for Push Notification Card tap
     }
 }
 

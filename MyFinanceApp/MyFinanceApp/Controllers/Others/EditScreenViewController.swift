@@ -13,9 +13,11 @@ class EditScreenViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     override func loadView() {
         view = editView
         editView.didTapEditAvatarImage = { [weak self] in
@@ -33,7 +35,7 @@ class EditScreenViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.setCurrentUser()
-        editView.configure(user: currentUser ?? User())
+        editView.configure(user: currentUser ?? User(id: nil, email: "", userName: "", avatarImageUrl: nil, password: ""))
     }
 
     private func createTextFieldUserDataCards() {
@@ -47,7 +49,7 @@ class EditScreenViewController: BaseViewController {
     private func setupBindings() {
         viewModel.$currentUser.sink { [weak self] user in
             self?.currentUser = user
-            self?.editView.configure(user: self?.currentUser ?? User())
+            self?.editView.configure(user: self?.currentUser ?? User(id: nil, email: "", userName: "", avatarImageUrl: nil, password: ""))
         }.store(in: &cancellable)
     }
 }

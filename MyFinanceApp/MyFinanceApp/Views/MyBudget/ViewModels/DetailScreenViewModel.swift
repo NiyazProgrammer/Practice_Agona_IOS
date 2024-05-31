@@ -1,8 +1,124 @@
-//
-//  DetailScreenViewModel.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 01.05.2024.
-//
-
 import Foundation
+import SwiftUI
+
+struct PieChartData {
+    let id: UUID
+    let color: Color
+    let amount: Double
+    var percent: CGFloat
+    var value: CGFloat
+}
+
+typealias TransactionGroup = [String: [Transaction]]
+
+final class DetailScreenViewModel: ObservableObject {
+    @Published var currentChartData: [PieChartData] = []
+    @Published var currentMonth: String
+    @Published var currentTypeTransactions: TransactionType = .expense {
+        didSet {
+            updateCurrentTransactionsInfoByType()
+        }
+    }
+
+    private var currentMonthIndex: Int
+    private var filteredTransactions: [Transaction] = []
+    private var transactions: [Transaction]
+
+    private var availableMonths: [String] {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        let monthSymbols = formatter.monthSymbols
+        let currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
+        return Array(monthSymbols?[0...currentMonthIndex] ?? [])
+    }
+
+    // MARK: Formatted date in mouth
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLLL"
+        return formatter
+    }()
+
+    init(transactions: [Transaction]) {
+        currentMonth = dateFormatter.string(from: Date())
+        currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
+        // MARK: Это временно потом это будет подгружаться из сети
+        self.transactions = transactions
+        updateCurrentTransactionsInfoByType()
+    }
+
+    func switchNextMonth() {
+        if currentMonthIndex < availableMonths.count - 1 {
+            currentMonthIndex += 1
+            currentMonth = availableMonths[currentMonthIndex]
+            updateCurrentTransactionsInfoByType()
+        }
+    }
+
+    func switchPreviousMonth() {
+        if currentMonthIndex > 0 {
+            currentMonthIndex -= 1
+            currentMonth = availableMonths[currentMonthIndex]
+            updateCurrentTransactionsInfoByType()
+        }
+    }
+
+    private func generatePieChartData() -> [PieChartData] {
+        let newFilteredTransactions = filteredTransactions.filter { $0.type == currentTypeTransactions }
+        var chartData: [PieChartData] = []
+
+        // MARK: Группировка транзакций по категориям
+        let groupedTransactions = Dictionary(grouping: newFilteredTransactions, by: { $0.transactionCategory })
+
+        // MARK: Создание данных для круговой диаграммы
+        for (category, transactions) in groupedTransactions {
+            let totalAmount = transactions.reduce(0.0) { $0 + $1.price }
+            chartData.append(PieChartData(id: UUID(), color: Color.color(for: category), amount: totalAmount, percent: 0.0, value: 0.0))
+        }
+        return chartData
+    }
+
+    private func calcForChartValue() {
+        calcChartValue(for: &currentChartData)
+    }
+
+    private func calcChartValue(for chartData: inout [PieChartData]) {
+        var value: CGFloat = 0
+
+        for index in 0..<chartData.count {
+            value += chartData[index].percent
+            chartData[index].value = value
+        }
+    }
+
+    private func updateCurrentTransactionsInfoByType() {
+        setupFiltersForTransactionsByType()
+        setupChartDataByType()
+    }
+
+    private func filterTransactionsByMonth() {
+        filteredTransactions = filteredTransactions.filter { transaction in
+            let month = Calendar.current.component(.month, from: transaction.dateParsed)
+            return month == currentMonthIndex + 1
+        }
+    }
+
+    private func setupFiltersForTransactionsByType() {
+        filteredTransactions = transactions.filter { $0.type == currentTypeTransactions}
+        filterTransactionsByMonth()
+    }
+
+    private func setupChartDataByType() {
+        currentChartData = generatePieChartData()
+        let total = currentChartData.reduce(0.0) { $0 + $1.amount }
+        for index in currentChartData.indices {
+            currentChartData[index].percent = CGFloat(currentChartData[index].amount / total)
+        }
+        calcForChartValue()
+    }
+
+    func groupTransactionsByDay() -> TransactionGroup {
+        guard !filteredTransactions.isEmpty else { return [:] }
+        return TransactionGroup(grouping: filteredTransactions, by: { $0.createDay })
+    }
+}

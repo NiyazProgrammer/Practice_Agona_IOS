@@ -2,6 +2,7 @@ import UIKit
 
 class EditScreenView: UIView {
     var didTapEditAvatarImage: (() -> Void)?
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -17,6 +18,7 @@ class EditScreenView: UIView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
+
     lazy var avatarImage: UIImageView = {
         let avatar = UIImageView()
         avatar.contentMode = .scaleAspectFill
@@ -28,7 +30,7 @@ class EditScreenView: UIView {
 
     private lazy var editAvatarImageBtn: UIButton = {
         let action = UIAction { [weak self] _ in
-            (self?.didTapEditAvatarImage ?? {})()
+            self?.didTapEditAvatarImage?()
         }
         let button = UIButton(type: .system, primaryAction: action)
         button.setTitle("Выбрать фотографию", for: .normal)
@@ -106,7 +108,11 @@ class EditScreenView: UIView {
     }
 
     func configure(user: User) {
-        avatarImage.image = user.avatarImage
+        if let avatarImageUrl = user.avatarImageUrl, let url = URL(string: avatarImageUrl) {
+            avatarImage.kf.setImage(with: url)
+        } else {
+            avatarImage.image = UIImage(named: "defaultAvatar")
+        }
 
         for card in dataCardsSV.arrangedSubviews {
             print(card)

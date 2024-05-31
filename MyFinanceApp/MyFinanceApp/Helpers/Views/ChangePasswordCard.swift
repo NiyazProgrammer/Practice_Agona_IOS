@@ -69,8 +69,8 @@ class ChangePasswordCard: UIView {
         ])
     }
 
-    @objc func tapHiddenButton() {
-        if dataTextField.isSecureTextEntry == true {
+    @objc private func tapHiddenButton() {
+        if dataTextField.isSecureTextEntry {
             dataTextField.isSecureTextEntry = false
             hiddenButton.setImage(UIImage(named: "eyeSlash"), for: .normal)
         } else {

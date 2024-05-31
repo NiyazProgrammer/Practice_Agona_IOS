@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LentaViewController: UIViewController {
+class LentaViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

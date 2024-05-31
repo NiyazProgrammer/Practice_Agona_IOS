@@ -1,20 +1,26 @@
+import Foundation
 import UIKit
+
 private enum NumberSecurityCard {
     static let appsPassword = 0
     static let changePasword = 1
-    static let PushNotification = 2
+    static let pushNotification = 2
 }
+
 protocol SettingViewDelegate: AnyObject {
     func didPressAppsPasswordCard()
     func didPressChangePasswordCard()
     func didPressPushNotificationCard()
 }
+
 protocol SettingViewForButtonDelegate: AnyObject {
     func didPressButtonEdit()
 }
+
 class SettingView: UIView {
     weak var delegate: SettingViewDelegate?
     weak var editButtondelegate: SettingViewForButtonDelegate?
+    var exitAccount: (() -> Void)?
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -30,6 +36,18 @@ class SettingView: UIView {
         contentView.backgroundColor = .clear
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
+    }()
+
+    private lazy var exitButton: UIButton = {
+        let action = UIAction { [weak self] _ in
+            (self?.exitAccount ?? {})()
+        }
+        var btn = UIButton(type: .custom, primaryAction: action)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Выйти из аккаунта", for: .normal)
+        btn.setTitleColor(.red, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        return btn
     }()
 
     lazy var imageUser: UIImageView = {
@@ -54,7 +72,6 @@ class SettingView: UIView {
     lazy var emailUser: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "steve@gmail.com"
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 12)
         label.numberOfLines = 0
@@ -112,9 +129,9 @@ class SettingView: UIView {
         contentView.addSubview(editButton)
         contentView.addSubview(securityLabel)
         contentView.addSubview(securityCardsSV)
+        addSubview(exitButton)
 
         setupLayout()
-
         createAllCards()
     }
 
@@ -140,27 +157,31 @@ class SettingView: UIView {
             withTapHandler: #selector(handleChangePasswordCardTap(_:))
         )
         createCard(
-            numbersCard: NumberSecurityCard.PushNotification,
+            numbersCard: NumberSecurityCard.pushNotification,
             withTapHandler: #selector(handlePushNotificationCardTap(_:))
         )
     }
 
-    @objc func handleAppsPasswordCardTap(_ sender: UITapGestureRecognizer) {
+    @objc private func handleAppsPasswordCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressAppsPasswordCard()
     }
 
-    @objc func handleChangePasswordCardTap(_ sender: UITapGestureRecognizer) {
+    @objc private func handleChangePasswordCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressChangePasswordCard()
     }
 
-    @objc func handlePushNotificationCardTap(_ sender: UITapGestureRecognizer) {
+    @objc private func handlePushNotificationCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressPushNotificationCard()
     }
 
-    func confugure(user: User) {
-        nameUser.text = (user.firstName ?? "") + " " + (user.lastName ?? "")
+    func configure(user: User) {
+        nameUser.text = user.userName
         emailUser.text = user.email
-        imageUser.image = user.avatarImage
+        if let avatarImageUrl = user.avatarImageUrl, let url = URL(string: avatarImageUrl) {
+            imageUser.kf.setImage(with: url)
+        } else {
+            imageUser.image = UIImage(named: "defaultAvatar")
+        }
     }
 
     private func setupLayout() {
@@ -196,7 +217,10 @@ class SettingView: UIView {
             securityCardsSV.topAnchor.constraint(equalTo: securityLabel.bottomAnchor, constant: 20),
             securityCardsSV.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             securityCardsSV.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            securityCardsSV.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            securityCardsSV.bottomAnchor.constraint(equalTo: exitButton.topAnchor, constant: -20),
+
+            exitButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            exitButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }

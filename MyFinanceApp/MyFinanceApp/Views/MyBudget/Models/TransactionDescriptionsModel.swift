@@ -1,8 +1,6 @@
-//
-//  TransactionDescriptionsModel.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 20.05.2024.
-//
-
 import Foundation
+
+struct TransactionDescriptionsModel: Codable {
+    let name: String
+    let price: Double
+}
