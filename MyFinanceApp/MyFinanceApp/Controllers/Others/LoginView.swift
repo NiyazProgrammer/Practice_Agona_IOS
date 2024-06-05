@@ -12,15 +12,15 @@ struct LoginView: View {
                             viewModel.goToApp()
                         }
                 } else {
-                    Text("Login")
+                    Text("Авторизация")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
 
                     VStack(alignment: .leading) {
-                        Text("Email")
+                        Text("E-mail")
                             .font(.subheadline)
                             .foregroundColor(.gray)
-                        TextField("Enter your email", text: $viewModel.email)
+                        TextField("Введите свой email", text: $viewModel.email)
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(8)
@@ -28,14 +28,14 @@ struct LoginView: View {
                     }
 
                     VStack(alignment: .leading) {
-                        Text("Password")
+                        Text("Пароль")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         HStack {
                             if viewModel.showPassword {
-                                TextField("Enter your password", text: $viewModel.password)
+                                TextField("Введите свой пароль", text: $viewModel.password)
                             } else {
-                                SecureField("Enter your password", text: $viewModel.password)
+                                SecureField("Введите свой пароль", text: $viewModel.password)
                             }
                             Button(action: {
                                 viewModel.showPassword.toggle()
@@ -54,10 +54,10 @@ struct LoginView: View {
                             await viewModel.loginUser()
                         }
                     }) {
-                        Text("Login")
+                        Text("Войти")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.blue)
+                            .background(Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
@@ -68,9 +68,9 @@ struct LoginView: View {
                     Spacer()
 
                     HStack {
-                        Text("Don't have an account?")
-                        NavigationLink(destination: RegisterView()) {
-                            Text("Sign Up")
+                        Text("Нет акаунта?")
+                        NavigationLink(destination: RegisterView().navigationBarBackButtonHidden(true)) {
+                            Text("Регистрация")
                                 .foregroundColor(.blue)
                         }
                     }

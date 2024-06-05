@@ -25,11 +25,11 @@ class BankCardRepositoryImpl: NSObject, BankCardRepositoryProtocol {
             }
         }
 
-        // MARK: Тут нужно добавить синхронизацию с базой данных
-        syncWithRemote()
+        // MARK: Sync with Database
+        syncWithRemoteService()
     }
 
-    private func syncWithRemote() {
+    private func syncWithRemoteService() {
         remoteService.fetchBankCards { [weak self] result in
             switch result {
             case .success(let remoteBankCards):
@@ -42,16 +42,14 @@ class BankCardRepositoryImpl: NSObject, BankCardRepositoryProtocol {
 
     private func updateLocalCache(with remoteBankCards: [BankCard]) {
         let context = CoreDataManager.shared.viewContext
-        context.perform {
+        context.perform { [weak self] in
             for remoteCard in remoteBankCards {
-                if let localCard = self.localService.fetchedResultsController.fetchedObjects?.first(where: { $0.id == remoteCard.id }) {
-                    // Update existing local card
+                if let localCard = self?.localService.fetchedResultsController.fetchedObjects?.first(where: { $0.id == remoteCard.id }) {
                     localCard.name = remoteCard.name
                     localCard.backImage = remoteCard.backImage
                     localCard.totalMoney = remoteCard.totalMoney
                     localCard.icon = remoteCard.labelImage
                 } else {
-                    // Add new remote card to local store
                     context.createBankCard(from: remoteCard)
                 }
             }
@@ -60,38 +58,41 @@ class BankCardRepositoryImpl: NSObject, BankCardRepositoryProtocol {
     }
 
     func addBankCard(_ card: BankCard) {
-        localService.addBankCard(card)
-        remoteService.addBankCard(card)
+        localService.addBankCard(card) { result in
+            print("Карта успешно добавлена в кэш")
+            // MARK: Требует обработки
+        }
+        remoteService.addBankCard(card) { result in
+            print("Карта успешно добавлена в базу данных")
+            // MARK: Требует обработки
+        }
     }
 
     func deleteBankCard(_ card: BankCard, completion: @escaping ((Result<Bool, any Error>) -> Void)) {
-        // MARK: Реализация удаления в базу данных
-        localService.deleteBankCard(card) { localResult in
-                    switch localResult {
-                    case .success:
-                        self.remoteService.deleteBankCard(card) { remoteResult in
-                            completion(remoteResult)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
+        localService.deleteBankCard(card) { [weak self] localResult in
+            switch localResult {
+            case .success:
+                self?.remoteService.deleteBankCard(card) { remoteResult in
+                    completion(remoteResult)
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     func updateBankCard(_ bankCard: BankCard, completion: @escaping ((Result<Bool, any Error>) -> Void)) {
-        // MARK: Реализация обновления в базу данных
-        localService.updateBankCard(bankCard) { localResult in
-                   switch localResult {
-                   case .success:
-                       self.remoteService.updateBankCard(bankCard) { remoteResult in
-                           completion(remoteResult)
-                       }
-                   case .failure(let error):
-                       completion(.failure(error))
-                   }
-               }
+        localService.updateBankCard(bankCard) { [weak self] localResult in
+            switch localResult {
+            case .success:
+                self?.remoteService.updateBankCard(bankCard) { remoteResult in
+                    completion(remoteResult)
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
-
 }
 extension BankCardRepositoryImpl: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

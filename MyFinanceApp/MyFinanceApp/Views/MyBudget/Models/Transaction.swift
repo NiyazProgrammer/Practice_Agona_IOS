@@ -7,7 +7,7 @@ struct Transaction: Identifiable, Codable {
     let date: String
     let price: Double
     let type: TransactionType
-    let transactionCategory: TransactionCategory
+    let category: TransactionCategory
     var descriptions: [TransactionDescriptionsModel] = []
 
     init(from transactionData: TransactionData) {
@@ -16,23 +16,30 @@ struct Transaction: Identifiable, Codable {
         self.date = transactionData.date
         self.price = transactionData.price
 
-        // Преобразование строкового значения в перечисление TransactionType
         if let transactionType = TransactionType(rawValue: transactionData.type) {
             self.type = transactionType
         } else {
             self.type = .expense
         }
 
-        // Преобразование категории транзакции
         if let expenseCategory = TransactionExpenseCategory(rawValue: transactionData.transactionCategory) {
-            self.transactionCategory = .expense(expenseCategory)
+            self.category = .expense(expenseCategory)
         } else if let incomeCategory = TransactionIncomeCategory(rawValue: transactionData.transactionCategory) {
-            self.transactionCategory = .income(incomeCategory)
+            self.category = .income(incomeCategory)
         } else {
-            self.transactionCategory = .expense(.others)
+            self.category = .expense(.others)
         }
 
         self.descriptions = []
+    }
+
+    init(id: UUID, name: String, date: String, price: Double, type: TransactionType, category: TransactionCategory) {
+        self.id = id
+        self.name = name
+        self.date = date
+        self.price = price
+        self.type = type
+        self.category = category
     }
 
     var dateParsed: Date {

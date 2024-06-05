@@ -7,45 +7,45 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B9F7510F-2376-4145-9E5C-8397F9146F49"
+            uuid = "B646668F-CEFC-4553-8517-89F1814051B8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyFinanceApp/ViewModels/EditScreenViewModel.swift"
+            filePath = "MyFinanceApp/Services/RemoteBankCardService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "setupBinding()"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "addBankCard(_:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "B9F7510F-2376-4145-9E5C-8397F9146F49 - 558a2a042fc39375"
+                  uuid = "B646668F-CEFC-4553-8517-89F1814051B8 - f30793fb257243b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MyFinanceApp.EditScreenViewModel.setupBinding() -&gt; ()"
+                  symbolName = "MyFinanceApp.RemoteBankCardService.addBankCard(_: MyFinanceApp.BankCard, completion: (Swift.Result&lt;Swift.Bool, Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "MyFinanceApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/niyazrizvanov/Practice_Agona_IOS/MyFinanceApp/MyFinanceApp/ViewModels/EditScreenViewModel.swift"
+                  urlString = "file:///Users/niyazrizvanov/Practice_Agona_IOS/MyFinanceApp/MyFinanceApp/Services/RemoteBankCardService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
                </Location>
                <Location
-                  uuid = "B9F7510F-2376-4145-9E5C-8397F9146F49 - d5636f75fd6b3bfe"
+                  uuid = "B646668F-CEFC-4553-8517-89F1814051B8 - 188892c1b24a7ee9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (MyFinanceApp.User) -&gt; () in MyFinanceApp.EditScreenViewModel.setupBinding() -&gt; ()"
+                  symbolName = "closure #1 @Sendable () -&gt; () in MyFinanceApp.RemoteBankCardService.addBankCard(_: MyFinanceApp.BankCard, completion: (Swift.Result&lt;Swift.Bool, Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "MyFinanceApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/niyazrizvanov/Practice_Agona_IOS/MyFinanceApp/MyFinanceApp/ViewModels/EditScreenViewModel.swift"
+                  urlString = "file:///Users/niyazrizvanov/Practice_Agona_IOS/MyFinanceApp/MyFinanceApp/Services/RemoteBankCardService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -53,48 +53,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7FF1AAF9-D015-4164-A26D-DEDE0310487A"
+            uuid = "11839189-D9BC-4EFB-83EB-84D564E7D813"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyFinanceApp/ViewModels/EditScreenViewModel.swift"
+            filePath = "MyFinanceApp/Repositories/TransactionRepositoryImpl.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "setupBinding()"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "addTransactionByCard(for:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2330810C-8197-4B35-8E63-6BB11B2AE7F9"
+            uuid = "C294A182-6135-404F-BC92-96B182A80726"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyFinanceApp/ViewModels/ProfileViewModel.swift"
+            filePath = "MyFinanceApp/Services/RemoteTransactionService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "9"
-            endingLineNumber = "9"
-            landmarkName = "init(usersData:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B3E0207E-D1F1-4229-A6D3-D015522C717C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyFinanceApp/ViewModels/ProfileViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "setUser()"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "addTransactionByCard(for:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

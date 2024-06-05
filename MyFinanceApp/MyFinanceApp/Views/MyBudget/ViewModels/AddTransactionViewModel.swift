@@ -8,11 +8,13 @@ class AddTransactionViewModel: ObservableObject {
     @Published var showTypePicker: Bool = false
     @Published var selectedDate: Date = Date()
     @Published var showDatePicker: Bool = false
+    private var selectedBankCard: BankCard
 
     private let repository: TransactionRepository
 
-    init(repository: TransactionRepository) {
+    init(selectedCard: BankCard, repository: TransactionRepository) {
         self.repository = repository
+        selectedBankCard = selectedCard
     }
 
     var categories: [TransactionCategory] {
@@ -42,21 +44,16 @@ class AddTransactionViewModel: ObservableObject {
     func addTransaction() {
         guard isFormValid() else { return }
 
-        guard let selectedTypeCategory = selectedTypeCategory, let amount = Double(amount)
-        else {
-            return
-        }
+        let transaction = Transaction(
+            id: UUID(),
+            name: selectedTransactionType.rawValue,
+            date: DateFormatter.dateFormatter.string(from: selectedDate),
+            price: Double(amount) ?? 0.0,
+            type: selectedTransactionType,
+            category: selectedTypeCategory ?? .expense(.others)
+        )
 
-//        let transaction = Transaction(
-//            id: UUID(),
-//            name: selectedTransactionType.rawValue,
-//            date: DateFormatter.dateFormatter.string(from: selectedDate),
-//            price: Double(amount),
-//            type: selectedTransactionType,
-//            transactionCategory: selectedTypeCategory,
-//            descriptions: [TransactionDescriptionsModel(name: description, price: Double(amount))]
-//        )
-//        repository.addTransaction(transaction)
+        repository.addTransactionByCard(for: selectedBankCard, transaction)
     }
 
     func isFormValid() -> Bool {

@@ -6,7 +6,7 @@ struct DetailActivityCell: View {
     var body: some View {
         VStack {
             HStack {
-                CategoryIconView(category: transaction.transactionCategory)
+                CategoryIconView(category: transaction.category)
                 Text(transaction.name)
                 Spacer()
                 VStack {

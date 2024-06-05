@@ -1,10 +1,3 @@
-//
-//  CoreDataManager.swift
-//  MyFinanceApp
-//
-//  Created by Нияз Ризванов on 29.05.2024.
-//
-
 import Foundation
 import CoreData
 
@@ -40,9 +33,9 @@ class CoreDataManager {
             }
         }
     }
-    // swiftlint:disable force_unwrapping
     func clearAllData() {
         let context = persistentContainer.viewContext
+        // swiftlint:disable force_unwrapping
         let entityNames = persistentContainer.managedObjectModel.entities.map({ $0.name! })
 
         do {

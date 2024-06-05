@@ -2,14 +2,6 @@ import Foundation
 import UIKit
 import Combine
 
-protocol UserDataServiceProtocol {
-    func getCurrentUser() -> User
-        func setupCurrentUser()
-        func setAvatarImageUserWithDB()
-        func setAvatarImageUser(image: UIImage)
-        var observerCurrentUser: ((User) -> Void)? { get set }
-}
-
 class UserDataManager: UserDataServiceProtocol {
     private var currentUser: User?
     var observerCurrentUser: ((User) -> Void)?
@@ -23,7 +15,7 @@ class UserDataManager: UserDataServiceProtocol {
 
     func setupCurrentUser() {
         let userId = UserDefaultsManager.shared.getUserId()
-        APIManager.shared.getUser(collection: "users", docName: userId) { [weak self] user in
+        FirebaseFirestoreManager.shared.getUser(collection: "users", docName: userId) { [weak self] user in
             if let newUser = user {
                 self?.currentUser = newUser
                 self?.setAvatarImageUserWithDB()
@@ -33,7 +25,7 @@ class UserDataManager: UserDataServiceProtocol {
 
     func setAvatarImageUserWithDB() {
         guard let avatarImageUrl = currentUser?.avatarImageUrl else { return }
-        APIManager.shared.getImage(imageUrl: avatarImageUrl) { [weak self] image in
+        FirebaseFirestoreManager.shared.getImage(imageUrl: avatarImageUrl) { [weak self] image in
             if let image = image {
                 self?.currentUser?.avatarImageUrl = avatarImageUrl
                 self?.observerCurrentUser?(self?.currentUser ?? User(id: nil, email: "", userName: "", avatarImageUrl: nil, password: ""))
@@ -43,7 +35,7 @@ class UserDataManager: UserDataServiceProtocol {
 
     func setAvatarImageUser(image: UIImage) {
         guard let imageData = image.pngData() else { return }
-        APIManager.shared.setImageAvatar(imageData: imageData) { [weak self] result in
+        FirebaseFirestoreManager.shared.setImageAvatar(imageData: imageData) { [weak self] result in
             switch result {
             case .success(let imageUrl):
                 self?.currentUser?.avatarImageUrl = imageUrl
@@ -56,7 +48,7 @@ class UserDataManager: UserDataServiceProtocol {
 
     private func updateUserAvatarUrlInDB(imageUrl: String) {
         guard let userId = currentUser?.id else { return }
-        APIManager.shared.updateUserAvatarUrl(userId: userId, imageUrl: imageUrl) { [weak self] success in
+        FirebaseFirestoreManager.shared.updateUserAvatarUrl(userId: userId, imageUrl: imageUrl) { [weak self] success in
             if success {
                 self?.observerCurrentUser?(self?.currentUser ?? User(id: nil, email: "", userName: "", avatarImageUrl: nil, password: ""))
             }

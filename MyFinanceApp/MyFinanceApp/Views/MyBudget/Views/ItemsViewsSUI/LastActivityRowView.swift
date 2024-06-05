@@ -4,7 +4,7 @@ struct LastActivityRowView: View {
     var activityObj: Transaction
     var body: some View {
         HStack {
-            CategoryIconView(category: activityObj.transactionCategory)
+            CategoryIconView(category: activityObj.category)
 
             VStack(alignment: .leading) {
                 Text("\(activityObj.name)")

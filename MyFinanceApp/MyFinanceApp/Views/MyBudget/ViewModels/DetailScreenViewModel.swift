@@ -22,7 +22,9 @@ final class DetailScreenViewModel: ObservableObject {
 
     private var currentMonthIndex: Int
     private var filteredTransactions: [Transaction] = []
-    private var transactions: [Transaction]
+    var selectedBankCard: BankCard
+
+    @Published var transactions: [Transaction] = []
 
     private var availableMonths: [String] {
         let formatter = DateFormatter()
@@ -39,11 +41,10 @@ final class DetailScreenViewModel: ObservableObject {
         return formatter
     }()
 
-    init(transactions: [Transaction]) {
+    init(bankCard: BankCard) {
+        selectedBankCard = bankCard
         currentMonth = dateFormatter.string(from: Date())
         currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
-        // MARK: Это временно потом это будет подгружаться из сети
-        self.transactions = transactions
         updateCurrentTransactionsInfoByType()
     }
 
@@ -68,7 +69,7 @@ final class DetailScreenViewModel: ObservableObject {
         var chartData: [PieChartData] = []
 
         // MARK: Группировка транзакций по категориям
-        let groupedTransactions = Dictionary(grouping: newFilteredTransactions, by: { $0.transactionCategory })
+        let groupedTransactions = Dictionary(grouping: newFilteredTransactions, by: { $0.category })
 
         // MARK: Создание данных для круговой диаграммы
         for (category, transactions) in groupedTransactions {
@@ -91,7 +92,7 @@ final class DetailScreenViewModel: ObservableObject {
         }
     }
 
-    private func updateCurrentTransactionsInfoByType() {
+    func updateCurrentTransactionsInfoByType() {
         setupFiltersForTransactionsByType()
         setupChartDataByType()
     }
@@ -104,7 +105,7 @@ final class DetailScreenViewModel: ObservableObject {
     }
 
     private func setupFiltersForTransactionsByType() {
-        filteredTransactions = transactions.filter { $0.type == currentTypeTransactions}
+        filteredTransactions = selectedBankCard.transactions?.filter { $0.type == currentTypeTransactions} ?? []
         filterTransactionsByMonth()
     }
 
@@ -120,5 +121,10 @@ final class DetailScreenViewModel: ObservableObject {
     func groupTransactionsByDay() -> TransactionGroup {
         guard !filteredTransactions.isEmpty else { return [:] }
         return TransactionGroup(grouping: filteredTransactions, by: { $0.createDay })
+    }
+
+    func addTransaction(_ transaction: Transaction) {
+        transactions.append(transaction)
+        updateCurrentTransactionsInfoByType()
     }
 }

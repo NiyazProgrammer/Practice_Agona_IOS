@@ -23,7 +23,7 @@ class ChangePasswordViewController: BaseViewController {
     }
 
     private func createChangeDataCards() {
-        let dataManager = DataManager()
+        let dataManager = SystemUICardsManager()
         for card in dataManager.changePasswordUsersCards {
             card.dataTextField.delegate = self
             changePasswordView.dataCardsSV.addArrangedSubview(card)

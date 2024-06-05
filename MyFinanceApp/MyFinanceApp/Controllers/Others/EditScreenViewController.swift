@@ -2,7 +2,7 @@ import UIKit
 import Combine
 
 class EditScreenViewController: BaseViewController {
-    private let editView = EditScreenView(frame: .zero)
+    private let editView = EditUserInfoView(frame: .zero)
     private var viewModel: EditScreenViewModel
     private var currentUser: User?
     private var cancellable: Set<AnyCancellable> = []
@@ -39,7 +39,7 @@ class EditScreenViewController: BaseViewController {
     }
 
     private func createTextFieldUserDataCards() {
-        let dataManager = DataManager()
+        let dataManager = SystemUICardsManager()
         for card in dataManager.changeDataUsersCards {
             card.dataTextField.delegate = self
             editView.dataCardsSV.addArrangedSubview(card)

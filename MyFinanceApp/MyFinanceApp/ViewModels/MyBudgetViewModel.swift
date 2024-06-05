@@ -16,33 +16,31 @@ class MyBudgetViewModel: ObservableObject {
 
     func loadData() {
         repository.onChange = { [weak self] in
-            self?.repository.fetchBankCards { result in
-                switch result {
-                case .success(let bankCards):
-                    self?.bankCards = bankCards
-                case .failure(let error):
-                    print("Error fetching bank cards: \(error)")
-                }
-            }
+            self?.fetchBankCards()
         }
-        repository.fetchBankCards { result in
+        fetchBankCards()
+    }
+
+    func fetchBankCards() {
+        self.repository.fetchBankCards { [weak self] result in
             switch result {
             case .success(let bankCards):
-                self.bankCards = bankCards
+                self?.bankCards = bankCards
+                self?.updateOperationsForSelectedCard()
+                self?.setTotalMoney()
             case .failure(let error):
                 print("Error fetching bank cards: \(error)")
             }
         }
-        //        MyBudgetApiManager.shared.fetchBudgetData { [weak self] bankCards, totalMoney in
-        //            DispatchQueue.main.async {
-        //                self?.bankCards = bankCards
-        //                self?.totalMoney = totalMoney
-        //                self?.selectedBankCard = bankCards[self?.selectedCardIndex ?? 0]
-        //            }
-        //        }
+    }
+    
+    private func setTotalMoney() {
+        totalMoney = bankCards.reduce(0.0) { $0 + $1.totalMoney }
     }
 
     func updateOperationsForSelectedCard() {
-        self.selectedBankCard = bankCards[selectedCardIndex]
+        if !bankCards.isEmpty {
+            self.selectedBankCard = bankCards[selectedCardIndex]
+        }
     }
 }

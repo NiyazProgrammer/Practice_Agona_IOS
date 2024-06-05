@@ -8,6 +8,4 @@ class AuthRepository {
         self.localService = localService
         self.remoteService = remoteService
     }
-
-    
 }

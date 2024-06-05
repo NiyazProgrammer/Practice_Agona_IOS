@@ -17,4 +17,12 @@ struct BankCard: Identifiable, Codable {
         self.labelImage = card.icon
         self.transactions = card.transactions?.map {return Transaction(from: $0)}
     }
+
+    init(id: UUID, name: String, backImage: String, totalMoney: Double, labelImage: String) {
+        self.id = id
+        self.name = name
+        self.backImage = backImage
+        self.totalMoney = totalMoney
+        self.labelImage = labelImage
+    }
 }

@@ -3,10 +3,7 @@ import Slideshow
 
 struct MyBudgetView: View {
     @ObservedObject var model: MyBudgetViewModel
-//    @StateObject private var model = MyBudgetViewModel(
-//            repository: BankCardRepositoryImpl(
-//                localService: LocalBankCardService(), remoteService: RemoteBankCardService())
-//            )
+
     var body: some View {
         NavigationView {
             VStack {
@@ -33,10 +30,10 @@ struct HeaderView: View {
                 HStack {
                     Text("Всего денег")
                         .foregroundStyle(.gray)
-                    Image(systemName: "chevron.right")
-                        .resizable()
-                        .frame(width: 7, height: 9)
-                        .foregroundStyle(.blue)
+//                    Image(systemName: "chevron.right")
+//                        .resizable()
+//                        .frame(width: 7, height: 9)
+//                        .foregroundStyle(.blue)
                 }.padding([.leading])
 
                 Text(model.totalMoney, format: .currency(code: "RUB"))
@@ -51,8 +48,9 @@ struct HeaderView: View {
 
             Spacer()
 
-            Image(systemName: "person.circle")
+            Image("\(String(describing: UserDataManager.shared.getCurrentUser().avatarImageUrl))")
                 .resizable()
+                .clipShape(Circle())
                 .frame(width: 40, height: 40)
                 .padding(.leading, 10)
         }
@@ -65,32 +63,19 @@ struct BankCardsView: View {
 
     var body: some View {
         VStack {
-            // MARK: Старая реализация со ScrollView
-            //                ScrollView(.horizontal, showsIndicators: false) {
-            //                    HStack(spacing: 0) {
-            //                        ForEach(self.$model.bankCards) { card in
-            //                            VStack {
-            //                                GeometryReader { geo in
-            //                                    NavigationLink(destination: DetailOperationScreenView(operations: model.operations)) { //
-            //                                        CardView(bankCard: card)
-            //                                            .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).minX) / 15),
-            //                                                              axis: (x: 0, y: 1, z: 0))
-            //                                    }
-            //                                }
-            //                                .frame(width: 300, height: 210)
-            //                                .scrollTargetBehavior(.paging)
-            //                            }
-            //                        }
-            //                    }
-            //                }
             if !model.bankCards.isEmpty {
                 Slideshow($model.bankCards, index: $model.selectedCardIndex) { slide in
                     VStack {
                         GeometryReader { geo in
-                            NavigationLink(destination: DetailOperationScreenView(model: DetailScreenViewModel(transactions: model.selectedBankCard?.transactions ?? []))) {
-                                CardView(bankCard: slide)
-                                    .scaleEffect(1.0 - abs(geo.frame(in: .global).midX - UIScreen.main.bounds.width / 2) / UIScreen.main.bounds.width)
-                                    .opacity(Double(1.0 - abs(geo.frame(in: .global).midX - UIScreen.main.bounds.width / 2) / UIScreen.main.bounds.width))
+                            if let bankCards = model.selectedBankCard {
+                                let destinationView = DetailOperationScreenView(model: DetailScreenViewModel(bankCard: bankCards))
+                                let cardView = CardView(bankCard: slide)
+                                    .scaleEffect(calculateScaleEffect(geo: geo))
+                                    .opacity(calculateOpacity(geo: geo))
+
+                                NavigationLink(destination: destinationView) {
+                                    cardView
+                                }
                             }
                         }
                         .frame(width: 300, height: 220)
@@ -107,18 +92,26 @@ struct BankCardsView: View {
             }
         }
     }
+
+    private func calculateScaleEffect(geo: GeometryProxy) -> CGFloat {
+        1.0 - abs(geo.frame(in: .global).midX - UIScreen.main.bounds.width / 2) / UIScreen.main.bounds.width
+    }
+
+    private func calculateOpacity(geo: GeometryProxy) -> Double {
+        Double(1.0 - abs(geo.frame(in: .global).midX - UIScreen.main.bounds.width / 2) / UIScreen.main.bounds.width)
+    }
 }
 
 struct AddCardButton: View {
     @ObservedObject var model: MyBudgetViewModel
 
     var body: some View {
-        NavigationLink(destination: AddCardView()) {
+        NavigationLink(destination: AddCardView(viewModel: AddCardViewModel(repository: BankCardRepositoryImpl(localService: LocalBankCardService(), remoteService: RemoteBankCardService())))) {
             HStack {
                 Image(systemName: "plus")
                     .resizable()
                     .frame(width: 25, height: 25)
-                Text("Add Card")
+                Text("Добавить карту")
                     .font(.title)
             }
             .foregroundStyle(.white)
@@ -137,22 +130,31 @@ struct LastActivitySection: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Last activity")
+                Text("Последние транзакции")
                     .font(.system(size: 18, weight: .bold))
                 Spacer()
             }
             .padding()
 
-            List(model.selectedBankCard?.transactions ?? []) { value in
-//                LastActivityRowView(
-//                                    activityObj: Transaction(id: UUID(),
-//                                    name: value.name,
-//                                    date: value.date,
-//                                    price: value.signedAmount,
-//                                    type: value.type,
-//                                    transactionCategory: value.transactionCategory))
+            if let transactions = model.selectedBankCard?.transactions {
+                if !transactions.isEmpty {
+                    List(transactions) { value in
+                        LastActivityRowView(
+                            activityObj: Transaction(
+                                id: UUID(),
+                                name: value.name,
+                                date: value.date,
+                                price: value.signedAmount,
+                                type: value.type,
+                                category: value.category
+                            )
+                        )
+                    }
+                    .listStyle(.plain)
+                }
+            } else {
+                Text("Транзакции не найдены")
             }
-            .listStyle(.plain)
         }
     }
 }

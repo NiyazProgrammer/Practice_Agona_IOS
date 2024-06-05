@@ -14,15 +14,15 @@ struct RegisterView: View {
                         }
                 } else {
                     VStack(spacing: 20) {
-                        Text("Register")
+                        Text("Регистрация")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
 
                         VStack(alignment: .leading) {
-                            Text("Email")
+                            Text("E-mail")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
-                            TextField("Enter your email", text: $viewModel.email)
+                            TextField("Введите свой email", text: $viewModel.email)
                                 .padding()
                                 .background(Color(.systemGray6))
                                 .cornerRadius(8)
@@ -30,24 +30,24 @@ struct RegisterView: View {
                         }
 
                         VStack(alignment: .leading) {
-                            Text("Username")
+                            Text("Имя пользователя")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
-                            TextField("Enter your username", text: $viewModel.username)
+                            TextField("Придумайте имя пользователя", text: $viewModel.username)
                                 .padding()
                                 .background(Color(.systemGray6))
                                 .cornerRadius(8)
                         }
 
                         VStack(alignment: .leading) {
-                            Text("Password")
+                            Text("Пароль")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                             HStack {
                                 if viewModel.showPassword {
-                                    TextField("Enter your password", text: $viewModel.password)
+                                    TextField("Придумайте пароль", text: $viewModel.password)
                                 } else {
-                                    SecureField("Enter your password", text: $viewModel.password)
+                                    SecureField("Введите пароль занова", text: $viewModel.password)
                                 }
                                 Button(action: {
                                     viewModel.showPassword.toggle()
@@ -62,14 +62,14 @@ struct RegisterView: View {
                         }
 
                         VStack(alignment: .leading) {
-                            Text("Confirm Password")
+                            Text("Повторите пароль")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                             HStack {
                                 if viewModel.showPassword {
-                                    TextField("Confirm your password", text: $viewModel.confirmPassword)
+                                    TextField("Введите пароль занова", text: $viewModel.confirmPassword)
                                 } else {
-                                    SecureField("Confirm your password", text: $viewModel.confirmPassword)
+                                    SecureField("Введите пароль занова", text: $viewModel.confirmPassword)
                                 }
                             }
                             .padding()
@@ -82,10 +82,10 @@ struct RegisterView: View {
                                 await viewModel.registerUser()
                             }
                         }) {
-                            Text("Sign Up")
+                            Text("Регистрация")
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.blue)
+                                .background(Color.purple)
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
                         }
@@ -96,9 +96,9 @@ struct RegisterView: View {
                         Spacer()
 
                         HStack {
-                            Text("Already have an account?")
-                            NavigationLink(destination: LoginView()) {
-                                Text("Log In")
+                            Text("Уже есть акаунт?")
+                            NavigationLink(destination: LoginView().navigationBarBackButtonHidden(true)) {
+                                Text("Войти")
                                     .foregroundColor(.blue)
                             }
                         }
@@ -114,8 +114,6 @@ struct RegisterView: View {
         }
     }
 }
-
-
 
 #Preview {
     RegisterView()

@@ -25,7 +25,7 @@ extension NSManagedObjectContext {
         transaction.price = newTransaction.price
         transaction.type = newTransaction.type.rawValue
 
-        switch newTransaction.transactionCategory {
+        switch newTransaction.category {
         case .expense(let expenseCategory):
             transaction.transactionCategory = expenseCategory.rawValue
         case .income(let incomeCategory):

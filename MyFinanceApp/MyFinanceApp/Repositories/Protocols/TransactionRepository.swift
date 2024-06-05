@@ -8,7 +8,8 @@
 import Foundation
 
 protocol TransactionRepository {
-    func addTransaction(_ transaction: Transaction)
-    func deleteTransaction(_ transaction: Transaction)
-    func fetchTransactions(completion: @escaping ([Transaction]) -> Void)
+    func addTransactionByCard(for card: BankCard, _ transaction: Transaction)
+    func deleteTransaction(for card: BankCard, _ transaction: Transaction)
+    func fetchTransactions(for card: BankCard, completion: @escaping ([Transaction]) -> Void)
+    func fetchTransactionsByCardId(for cardId: UUID, completion: @escaping ([Transaction]) -> Void)
 }

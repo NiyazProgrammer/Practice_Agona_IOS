@@ -55,7 +55,7 @@ struct DetailOperationScreenView: View {
             }
             .toolbar(content: {
                 ToolbarItem(placement: .topBarTrailing) {
-                    ButtonAddTransactionView(isPresentingAddTransactionView: $isPresentingAddTransactionView)
+                    buttonAddTransactionView
                 }
             })
             .navigationTitle("Транзакции")
@@ -118,24 +118,23 @@ extension DetailOperationScreenView {
         }
     }
 
-    struct ButtonAddTransactionView: View {
-        @Binding var isPresentingAddTransactionView: Bool
-        var body: some View {
-            Button(action: { isPresentingAddTransactionView = true }, label: {
-                Image(systemName: "plus")
-                    .resizable()
-                    .frame(width: 25, height: 25)
-                    .foregroundStyle(.white)
-                    .padding(.trailing, 7)
-            })
-            .frame(width: 35, height: 35)
-            .background(LinearGradient(colors: [.blue, .purple, .pink], startPoint: .leading, endPoint: .trailing))
-            .clipShape(Circle())
-            .contentShape(Circle())
-            .fixedSize()
-            .sheet(isPresented: $isPresentingAddTransactionView) {
-                var transactionVireModel = AddTransactionViewModel(repository: CombinedTransactionRepository(localRepository: LocalTransactionService(), remoteRepository: RemoteTransactionService()))
-                AddTransactionView(viewModel: transactionVireModel)
+    private var buttonAddTransactionView: some View {
+        Button(action: { isPresentingAddTransactionView = true }, label: {
+            Image(systemName: "plus")
+                .resizable()
+                .frame(width: 25, height: 25)
+                .foregroundStyle(.white)
+                .padding(.trailing, 7)
+        })
+        .frame(width: 35, height: 35)
+        .background(LinearGradient(colors: [.blue, .purple, .pink], startPoint: .leading, endPoint: .trailing))
+        .clipShape(Circle())
+        .contentShape(Circle())
+        .fixedSize()
+        .sheet(isPresented: $isPresentingAddTransactionView) {
+            let transactionVireModel = AddTransactionViewModel(selectedCard: model.selectedBankCard, repository: TransactionRepositoryImpl(localService: LocalTransactionService(), remoteService: RemoteTransactionService()))
+            AddTransactionView(viewModel: transactionVireModel) {
+                model.addTransaction($0) 
             }
         }
     }
@@ -148,15 +147,20 @@ struct TransactionsListByType: View {
     var body: some View {
         VStack(alignment: .leading) {
             ForEach(Array(viewModel.groupTransactionsByDay()), id: \.key) { month, transactions in
-                Section {
-                    ForEach(transactions) { transaction in
-                        DetailActivityCell(transaction: transaction)
+                if !transactions.isEmpty {
+                    Section {
+                        ForEach(transactions) { transaction in
+                            DetailActivityCell(transaction: transaction)
+                        }
+                    } header: {
+                        Text(month)
+                            .frame(alignment: .leading)
                     }
-                } header: {
-                    Text(month)
-                        .frame(alignment: .leading)
+                    .listSectionSeparator(.hidden)
+                } else {
+                    Text("За выбранный период ничего не найдено.")
+                        .padding()
                 }
-                .listSectionSeparator(.hidden)
             }
         }
         .padding()

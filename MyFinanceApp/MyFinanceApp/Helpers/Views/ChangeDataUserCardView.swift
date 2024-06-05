@@ -30,9 +30,10 @@ class ChangeDataUserCardView: UIView {
 
     private let editImage: UIImageView = {
         let image = UIImageView(image: Resources.Images.ChangeDataCards.editPencil)
+        image.tintColor = .white
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
-        image.backgroundColor = Resources.Colors.mainColorApp
+        image.backgroundColor = UIColor(hexString: "#bd8fda")
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
         return image
@@ -72,8 +73,8 @@ class ChangeDataUserCardView: UIView {
 
             editImage.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             editImage.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
-            editImage.widthAnchor.constraint(equalToConstant: 20),
-            editImage.heightAnchor.constraint(equalToConstant: 20),
+            editImage.widthAnchor.constraint(equalToConstant: 25),
+            editImage.heightAnchor.constraint(equalToConstant: 25),
 
             nameAndTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
             nameAndTextField.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),

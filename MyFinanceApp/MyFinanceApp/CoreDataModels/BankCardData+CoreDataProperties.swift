@@ -54,7 +54,3 @@ extension BankCardData {
     @NSManaged public func removeFromTransactions(_ values: NSOrderedSet)
 
 }
-
-extension BankCardData: Identifiable {
-
-}

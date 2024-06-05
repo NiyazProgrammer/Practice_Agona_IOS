@@ -10,7 +10,7 @@ enum ModalType: Identifiable {
 
 struct AddCardView: View {
     @State private var showModal: ModalType?
-    @ObservedObject var viewModel = AddCardViewModel()
+    @ObservedObject var viewModel: AddCardViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -21,7 +21,7 @@ struct AddCardView: View {
             DashedLine()
                 .stroke(style: StrokeStyle(lineWidth: 2, dash: [2, 4]))
                 .frame(height: 1)
-                .foregroundStyle(.blue)
+                .foregroundStyle(.purple)
                 .padding([.leading, .trailing, .top], 10)
 
             OptionCardCell()
@@ -104,10 +104,10 @@ struct DetailRow: View {
             Button(action: action) {
                 HStack {
                     Text(value)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.black)
                     Image(systemName: "chevron.right")
                         .font(.system(size: 15, weight: .bold))
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.purple)
                 }
                 .padding([.top, .bottom, .trailing], 10)
             }

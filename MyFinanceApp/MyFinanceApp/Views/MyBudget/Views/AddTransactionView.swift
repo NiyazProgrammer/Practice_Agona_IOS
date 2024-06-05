@@ -3,6 +3,7 @@ import SwiftUI
 struct AddTransactionView: View {
     @ObservedObject var viewModel: AddTransactionViewModel
     @Environment(\.presentationMode) var presentationMode
+    var onTransactionAdded: (Transaction) -> Void
 
     var body: some View {
         VStack {

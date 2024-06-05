@@ -21,7 +21,3 @@ extension TransactionData {
     @NSManaged public var bankCard: BankCardData?
 
 }
-
-extension TransactionData: Identifiable {
-
-}

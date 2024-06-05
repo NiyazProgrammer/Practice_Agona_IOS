@@ -54,8 +54,9 @@ extension ProfileViewController: ProfileViewDelegate {
     }
 
     func didPressNotificationCard() {
-        let data = DataManager().notifications
-        let viewModel = NotificationViewModel(notifications: data)
-        navigationController?.pushViewController(NotificationViewController(viewModel: viewModel), animated: true)
+// MARK: Временно убрал так как еще не реализовал функционал
+//        let data = DataManager().notifications
+//        let viewModel = NotificationViewModel(notifications: data)
+//        navigationController?.pushViewController(NotificationViewController(viewModel: viewModel), animated: true)
     }
 }

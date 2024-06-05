@@ -25,11 +25,12 @@ class ChangePasswordCard: UIView {
 
     private lazy var hiddenButton: UIButton = {
         let button = UIButton(type: .custom)
-        let image = UIImage(named: "eye")
+        let image = UIImage(systemName: "eye.fill")
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
+        button.imageView?.tintColor = .white
         button.imageView?.contentMode = .scaleAspectFit
-        button.backgroundColor = UIColor(hexString: "#f2f0fd")
+        button.backgroundColor = UIColor(hexString: "#bd8fda")
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(tapHiddenButton), for: .touchUpInside)
@@ -72,10 +73,10 @@ class ChangePasswordCard: UIView {
     @objc private func tapHiddenButton() {
         if dataTextField.isSecureTextEntry {
             dataTextField.isSecureTextEntry = false
-            hiddenButton.setImage(UIImage(named: "eyeSlash"), for: .normal)
+            hiddenButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         } else {
             dataTextField.isSecureTextEntry = true
-            hiddenButton.setImage(UIImage(named: "eye"), for: .normal)
+            hiddenButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         }
     }
 }

@@ -7,22 +7,17 @@ class AddCardViewModel: ObservableObject {
     @Published var selectedBackground: String = "defaultBackground"
     @Published var selectedBalance: String = "0,00"
 
-//    private let repository: BankCardRepository
+    private let repository: BankCardRepositoryProtocol
 
-//    init(repository: BankCardRepository) {
-//        self.repository = repository
-//    }
+    init(repository: BankCardRepositoryProtocol) {
+        self.repository = repository
+    }
 
     func saveCard() {
-//        repository.addBankCard(BankCard(backImage: selectedBackground,
-//                                        name: name,
-//                                        totalMoney: Double(selectedBalance) ?? 0.0,
-//                                        labelImage: selectedIcon)) { data in
-//
-//        }
-//        MyBudgetApiManager.shared.addBankCard(card: BankCard(id: UUID(), backImage: selectedBackground,
-//                                                             name: name,
-//                                                             totalMoney: Double(selectedBalance) ?? 0.0,
-//                                                             labelImage: selectedIcon))
+        repository.addBankCard(BankCard(id: UUID(),
+                                        name: self.name,
+                                        backImage: selectedBackground,
+                                        totalMoney: Double(selectedBalance) ?? 0.0,
+                                        labelImage: selectedIcon))
     }
 }
