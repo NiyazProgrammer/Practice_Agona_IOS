@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -6,12 +7,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        let tabBarController = TabBarController()
-
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
+
+        if UserDefaultsManager.shared.getStatus() {
+            window?.rootViewController = TabBarController()
+            window?.makeKeyAndVisible()
+        } else {
+            let navVc = UIHostingController(rootView: LoginView())
+            window?.rootViewController = navVc
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -27,9 +33,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
-
-
 }
 

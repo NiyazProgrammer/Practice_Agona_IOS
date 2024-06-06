@@ -2,8 +2,8 @@ import UIKit
 
 enum Resources {
     enum Colors {
-        static let active = UIColor(hexString: "#373062")
-        static let mainColorApp = UIColor(hexString: "#373062")
+        static let active = UIColor(.purple)
+        static let mainColorApp = UIColor(.purple)
         static let inactive  = UIColor(hexString: "#bdbdbd")
         static let separator = UIColor(hexString: "bdbdbd")
         static let backgroundViews = UIColor(hexString: "#f7f7f7")
@@ -44,18 +44,12 @@ enum Resources {
 
         enum ChangeDataCards {
             enum TitleCard {
-                static let lastName = "Фамилия"
-                static let firstName = "Имя"
-                static let middleName = "Отчество"
                 static let email = "E-mail"
                 static let nameUser = "Имя пользователя"
             }
             enum PlaceholderCard {
-                static let lastName = "Введите фамилию"
-                static let firstName = "Введите имя"
-                static let middleName = "Введите отчество"
                 static let email = "Введите Email "
-                static let nameUser = "@User12345"
+                static let nameUser = "Введите имя пользователя"
             }
         }
 
@@ -68,18 +62,19 @@ enum Resources {
         }
 
         static let all: [String] = ["Лента", "Валюта"]
+
+        static let currencies: [String] = ["USD", "EUR", "KZT", "AED", "TRY"]
     }
 
     enum Images {
-
         static let mainAppIcon = UIImage(named: "LaunchImage")
 
         enum TabBar {
-            static let myMoney = UIImage(named: "general")
-            static let budget = UIImage(named: "budget")
-            static let lenta = UIImage(named: "lenta")
-            static let courses = UIImage(named: "courses")
-            static let profile = UIImage(named: "profile")
+            static let home = UIImage(systemName: "house")
+            static let budget = UIImage(systemName: "creditcard")
+            static let lenta = UIImage(systemName: "newspaper")
+            static let courses = UIImage(systemName: "chart.bar.xaxis")
+            static let profile = UIImage(systemName: "person.crop.circle")
         }
 
         enum GeneralCardsProfile {
@@ -96,8 +91,7 @@ enum Resources {
         }
 
         enum ChangeDataCards {
-            static let editPencil = UIImage(named: "editPencil")
-            static let editCamera = UIImage(named: "editCamera")
+            static let editPencil = UIImage(systemName: "pencil")
             static let defaultAvatar = UIImage(named: "defaultAvatar")
         }
     }
@@ -106,5 +100,9 @@ enum Resources {
         static func helveticaRegular(with size: CGFloat) -> UIFont {
             UIFont(name: "Helvetica", size: size) ?? UIFont()
         }
+    }
+
+    enum NumbersItemCount {
+        static let currencyCount = 5
     }
 }

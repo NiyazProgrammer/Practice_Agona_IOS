@@ -30,9 +30,10 @@ class ChangeDataUserCardView: UIView {
 
     private let editImage: UIImageView = {
         let image = UIImageView(image: Resources.Images.ChangeDataCards.editPencil)
+        image.tintColor = .white
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
-        image.backgroundColor = Resources.Colors.mainColorApp
+        image.backgroundColor = UIColor(hexString: "#bd8fda")
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
         return image
@@ -66,14 +67,14 @@ class ChangeDataUserCardView: UIView {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            cardView.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            cardView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             cardView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             cardView.heightAnchor.constraint(equalToConstant: 70),
 
             editImage.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             editImage.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
-            editImage.widthAnchor.constraint(equalToConstant: 20),
-            editImage.heightAnchor.constraint(equalToConstant: 20),
+            editImage.widthAnchor.constraint(equalToConstant: 25),
+            editImage.heightAnchor.constraint(equalToConstant: 25),
 
             nameAndTextField.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 20),
             nameAndTextField.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
