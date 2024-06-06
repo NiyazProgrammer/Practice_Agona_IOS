@@ -56,18 +56,10 @@ class SettingViewController: BaseViewController {
 }
 
 extension SettingViewController: SettingViewDelegate {
-    func didPressAppsPasswordCard() {
-        // Implement the logic for Apps Password Card tap
-    }
-
     func didPressChangePasswordCard() {
         let changePasswordVM = ChangePasswordViewModel()
         let changePasswordVC = ChangePasswordViewController(changePasswordViewModel: changePasswordVM)
         navigationController?.pushViewController(changePasswordVC, animated: true)
-    }
-
-    func didPressPushNotificationCard() {
-        // Implement the logic for Push Notification Card tap
     }
 }
 

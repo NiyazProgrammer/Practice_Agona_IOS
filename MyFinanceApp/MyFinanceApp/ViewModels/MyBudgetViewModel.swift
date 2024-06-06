@@ -15,9 +15,10 @@ class MyBudgetViewModel: ObservableObject {
     }
 
     func loadData() {
-        repository.onChange = { [weak self] in
-            self?.fetchBankCards()
-        }
+// MARK: Надо будет исправить
+//        repository.onChange = { [weak self] in
+////            self?.fetchBankCards()
+//        }
         fetchBankCards()
     }
 

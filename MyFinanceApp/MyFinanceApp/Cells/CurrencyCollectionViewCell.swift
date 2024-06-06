@@ -52,7 +52,7 @@ class CurrencyCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupLayout() {
+    private func setupLayout() {
         fullNameCurrency.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(15)

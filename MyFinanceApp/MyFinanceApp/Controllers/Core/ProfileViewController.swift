@@ -24,7 +24,7 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
-        title = "Профиль"
+        title = Resources.Strings.TabBar.profile
         profileView.delegate = self
     }
 
@@ -46,17 +46,5 @@ extension ProfileViewController: ProfileViewDelegate {
     func didPressSettingCard() {
         let viewModel = SettingViewModel(usersData: UserDataManager.shared)
         navigationController?.pushViewController(SettingViewController(viewModel: viewModel), animated: true)
-    }
-
-    func didPressFavoritesCard() {
-        let viewModel = FavoritesViewModel()
-        navigationController?.pushViewController(FavoritesViewController(viewModel: viewModel), animated: true)
-    }
-
-    func didPressNotificationCard() {
-// MARK: Временно убрал так как еще не реализовал функционал
-//        let data = DataManager().notifications
-//        let viewModel = NotificationViewModel(notifications: data)
-//        navigationController?.pushViewController(NotificationViewController(viewModel: viewModel), animated: true)
     }
 }

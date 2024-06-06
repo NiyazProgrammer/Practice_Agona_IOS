@@ -15,7 +15,7 @@ class RegisterViewModel: ObservableObject {
     func registerUser() async {
         guard !email.isEmpty, !password.isEmpty, !confirmPassword.isEmpty, !username.isEmpty else {
             DispatchQueue.main.async {
-                self.alertMessage = "Please fill all fields"
+                self.alertMessage = "Пожалуйста заполните все поля"
                 self.showAlert = true
             }
             return

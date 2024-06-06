@@ -2,7 +2,7 @@ import UIKit
 
 class SecurityTableViewCell: UITableViewCell {
 
-    lazy var cardView: UIView = {
+    private lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 30
@@ -11,7 +11,7 @@ class SecurityTableViewCell: UITableViewCell {
         return view
     }()
 
-    lazy var nameCardLabel: UILabel = {
+    private lazy var nameCardLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -19,7 +19,7 @@ class SecurityTableViewCell: UITableViewCell {
         return label
     }()
 
-    lazy var conteynerImageView: UIView = {
+    private lazy var conteynerImageView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 20
@@ -32,13 +32,13 @@ class SecurityTableViewCell: UITableViewCell {
         return view
     }()
 
-    lazy var imageCard: UIImageView = {
+    private lazy var imageCard: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    lazy var nextRightArrow: UIImageView = {
+    private lazy var nextRightArrow: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "rightArrow"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -65,7 +65,7 @@ class SecurityTableViewCell: UITableViewCell {
         conteynerImageView.backgroundColor = color
     }
 
-    func setupLayout() {
+    private func setupLayout() {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -91,6 +91,7 @@ class SecurityTableViewCell: UITableViewCell {
         ])
     }
 }
+
 extension SecurityTableViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)

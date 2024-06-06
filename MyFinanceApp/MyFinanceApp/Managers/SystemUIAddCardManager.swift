@@ -7,7 +7,7 @@ class SystemUIAddCardManager {
         "alpha", "tinkoff", "sber", "rayfazen", "open", "uMoney"
     ]
 
-    private var currencies = ["Российский рубль", "Доллар США", "Евро"]
+    private var currencies = ["Российский рубль"]
 
     func getCurrency() -> [String] {
         return currencies

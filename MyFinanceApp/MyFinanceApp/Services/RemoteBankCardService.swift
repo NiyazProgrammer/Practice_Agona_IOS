@@ -7,40 +7,40 @@ class RemoteBankCardService: BankCardServiceProtocol {
 
     func fetchBankCards(completion: @escaping ((Result<[BankCard], any Error>) -> Void)) {
 
-//            let userRef = db.collection("bank-cards").document(userId)
-//
-//        userRef.collection("cards").getDocuments { (query, error) in
-//                if let error = error {
-//                    print("Ошибка при получении банковской карты: \(error.localizedDescription)")
-//
-//                        completion(.failure(error))
-//                        return
-//
-//                }
-//
-//                var cards: [BankCard] = []
-//
-//                for document in query?.documents ?? [] {
-//                    let cardData = document.data()
-//                    if let cardIdString = cardData["id"] as? String,
-//                       let cardId = UUID(uuidString: cardIdString),
-//                       let cardName = cardData["username"] as? String,
-//                       let backImage = cardData["backImage"] as? String,
-//                       let totalMoney = cardData["totalMoney"] as? Double,
-//                       let labelImage = cardData["labelImage"] as? String {
-//                        let card = BankCard(id: cardId,
-//                                            name: cardName,
-//                                            backImage: backImage,
-//                                            totalMoney: totalMoney,
-//                                            labelImage: labelImage)
-//                        cards.append(card)
-//                    }
-//                }
-//
-//
-//                    completion(.success(cards))
-//
-//            }
+            let userRef = db.collection("bank-cards").document(userId)
+
+        userRef.collection("cards").getDocuments { (query, error) in
+                if let error = error {
+                    print("Ошибка при получении банковской карты: \(error.localizedDescription)")
+
+                        completion(.failure(error))
+                        return
+
+                }
+
+                var cards: [BankCard] = []
+
+                for document in query?.documents ?? [] {
+                    let cardData = document.data()
+                    if let cardIdString = cardData["id"] as? String,
+                       let cardId = UUID(uuidString: cardIdString),
+                       let cardName = cardData["username"] as? String,
+                       let backImage = cardData["backImage"] as? String,
+                       let totalMoney = cardData["totalMoney"] as? Double,
+                       let labelImage = cardData["labelImage"] as? String {
+                        let card = BankCard(id: cardId,
+                                            name: cardName,
+                                            backImage: backImage,
+                                            totalMoney: totalMoney,
+                                            labelImage: labelImage)
+                        cards.append(card)
+                    }
+                }
+
+
+                    completion(.success(cards))
+
+            }
     }
 
     func addBankCard(_ card: BankCard, completion: @escaping ((Result<Bool, Error>) -> Void)) {

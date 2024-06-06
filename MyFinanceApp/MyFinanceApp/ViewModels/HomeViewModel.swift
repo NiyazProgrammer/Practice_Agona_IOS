@@ -39,7 +39,7 @@ class HomeViewModel: ObservableObject {
             case .success(let coin):
                 if let valute = coin.valute {
                     var accessCurrencies: [Valute] = []
-                    for (key, value) in valute {
+                    for (_, value) in valute {
                         if Resources.Strings.currencies.contains(value.charCode) {
                             accessCurrencies.append(value)
                         }
@@ -53,17 +53,6 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-    //        currencyRepository.fetchCurrencies { [weak self] result in
-    //            switch result {
-    //            case .success(let currencies):
-    //                DispatchQueue.main.async {
-    //                    self?.currencies = currencies
-    //                }
-    //            case .failure(let error):
-    //                print("Error fetching currencies: \(error)")
-    //            }
-    //        }
-
 
     private func fetchTotalMoney() {
         totalMoney = bankCards.reduce(0.0) { $0 + $1.totalMoney}

@@ -2,7 +2,7 @@ import UIKit
 
 class GeneralProfileTableViewCell: UITableViewCell {
 
-    lazy var cardView: UIView = {
+    private lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 30
@@ -11,7 +11,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
         return view
     }()
 
-    lazy var nameCardLabel: UILabel = {
+    private lazy var nameCardLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -19,7 +19,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
         return label
     }()
 
-    lazy var conteynerImageView: UIView = {
+    private lazy var conteynerImageView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 20
@@ -32,7 +32,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
         return view
     }()
 
-    lazy var imageCard: UIImageView = {
+    private lazy var imageCard: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -58,7 +58,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
         conteynerImageView.backgroundColor = color
     }
 
-    func setupLayout() {
+    private func setupLayout() {
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
@@ -82,6 +82,7 @@ class GeneralProfileTableViewCell: UITableViewCell {
     }
 
 }
+
 extension GeneralProfileTableViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)

@@ -9,8 +9,6 @@ private enum NumberCard {
 
 protocol ProfileViewDelegate: AnyObject {
     func didPressSettingCard()
-    func didPressFavoritesCard()
-    func didPressNotificationCard()
 }
 
 class ProfileView: UIView {
@@ -31,13 +29,6 @@ class ProfileView: UIView {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
-//    MARK: Временно убрал так как еще не реализовал функционал
-//    private lazy var backgraoundImageProfile: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.image = UIImage(named: "backgroundImageProfile")
-//        return imageView
-//    }()
 
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
@@ -58,42 +49,6 @@ class ProfileView: UIView {
         label.sizeToFit()
         return label
     }()
-//    MARK: Временно убрал так как еще не реализовал функционал
-//    private lazy var expenseLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "Расход"
-//        label.textColor = .gray
-//        label.font = UIFont.systemFont(ofSize: 16)
-//        return label
-//    }()
-//
-//    private lazy var expenseNumberLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "10000"
-//        label.textColor = .black
-//        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-//        return label
-//    }()
-//
-//    private lazy var incomeLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "Доход"
-//        label.textColor = .gray
-//        label.font = UIFont.systemFont(ofSize: 16)
-//        return label
-//    }()
-//
-//    private lazy var incomeNumberLabel: UILabel = {
-//        let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.text = "10000"
-//        label.textColor = .black
-//        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-//        return label
-//    }()
 
     private lazy var generalLabel: UILabel = {
         let label = UILabel()
@@ -103,17 +58,6 @@ class ProfileView: UIView {
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
     }()
-//    MARK: Временно убрал так как еще не реализовал функционал
-//    private lazy var mainExpenseAndIcomeStackView: UIStackView = {
-//        let expenseStackView = createVerticalStackView([expenseLabel, expenseNumberLabel])
-//        let incomeStackView = createVerticalStackView([incomeLabel, incomeNumberLabel])
-//
-//        let mainExpenseAndIcomeStackView = UIStackView(arrangedSubviews: [expenseStackView, incomeStackView])
-//        mainExpenseAndIcomeStackView.translatesAutoresizingMaskIntoConstraints = false
-//        mainExpenseAndIcomeStackView.axis = .horizontal
-//        mainExpenseAndIcomeStackView.distribution = .fillEqually
-//        return mainExpenseAndIcomeStackView
-//    }()
 
     private let generalCardsSV: UIStackView = {
         let stackView = UIStackView()
@@ -129,13 +73,9 @@ class ProfileView: UIView {
         backgroundColor = .white
         addSubview(scrollView)
         scrollView.addSubview(contentView)
-//    MARK: Временно убрал так как еще не реализовал функционал
-//        contentView.addSubview(backgraoundImageProfile)
         contentView.addSubview(profileImage)
         contentView.addSubview(nameLabel)
         contentView.addSubview(generalLabel)
-//      MARK: Временно убрал так как еще не реализовал функционал
-//        contentView.addSubview(mainExpenseAndIcomeStackView)
         contentView.addSubview(generalCardsSV)
 
         createAllCards()
@@ -168,27 +108,10 @@ class ProfileView: UIView {
             numbersCard: NumberCard.setting,
             withTapHandler: #selector(handleSettingCardTap(_:))
         )
-//      MARK: Временно убрал так как еще не реализовал функционал
-//        createCard(
-//            numbersCard: NumberCard.favorites,
-//            withTapHandler: #selector(handleFavoiritesCardTap(_:))
-//        )
-//        createCard(
-//            numbersCard: NumberCard.notification,
-//            withTapHandler: #selector(handleNotificationCardTap(_:))
-//        )
     }
 
     @objc func handleSettingCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressSettingCard()
-    }
-
-    @objc func handleFavoiritesCardTap(_ sender: UITapGestureRecognizer) {
-        delegate?.didPressFavoritesCard()
-    }
-
-    @objc func handleNotificationCardTap(_ sender: UITapGestureRecognizer) {
-        delegate?.didPressNotificationCard()
     }
 
     func configure(user: User) {
@@ -212,11 +135,6 @@ class ProfileView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-//    MARK: Временно убрал так как еще не реализовал функционал
-//            backgraoundImageProfile.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            backgraoundImageProfile.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            backgraoundImageProfile.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            backgraoundImageProfile.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2.5),
 
             profileImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             profileImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
@@ -225,10 +143,6 @@ class ProfileView: UIView {
 
             nameLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 10),
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//      MARK: Временно убрал так как еще не реализовал функционал
-//            mainExpenseAndIcomeStackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 40),
-//            mainExpenseAndIcomeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            mainExpenseAndIcomeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
 
             generalLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 50),
             generalLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),

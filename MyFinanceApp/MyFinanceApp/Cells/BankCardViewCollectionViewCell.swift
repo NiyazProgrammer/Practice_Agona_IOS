@@ -15,17 +15,17 @@ class BankCardViewCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-
-    private lazy var addImageView: UIButton = {
-        let action = UIAction { [weak self] _ in
-            self?.addNewTransaction?()
-        }
-        let button = UIButton(type: .custom, primaryAction: action)
-        button.setImage(UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.imageView?.tintColor = .black
-        button.imageView?.contentMode = .scaleAspectFill
-        return button
-    }()
+// MARK: Прямое добавление транзакции через главный экран не реализовал
+//    private lazy var addImageView: UIButton = {
+//        let action = UIAction { [weak self] _ in
+//            self?.addNewTransaction?()
+//        }
+//        let button = UIButton(type: .custom, primaryAction: action)
+//        button.setImage(UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        button.imageView?.tintColor = .black
+//        button.imageView?.contentMode = .scaleAspectFill
+//        return button
+//    }()
 
     private lazy var accountBalanceLabel: UILabel = {
         let label = UILabel()
@@ -59,7 +59,7 @@ class BankCardViewCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(backImageCard)
         contentView.addSubview(iconImageView)
         contentView.addSubview(nameAndAmountSV)
-        contentView.addSubview(addImageView)
+//        contentView.addSubview(addImageView)
 
         setupLayaut()
     }
@@ -87,11 +87,11 @@ class BankCardViewCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(backImageCard.snp.trailing).offset(10)
         }
 
-        addImageView.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView.snp.centerY)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
-            make.width.height.equalTo(20)
-        }
+//        addImageView.snp.makeConstraints { make in
+//            make.centerY.equalTo(contentView.snp.centerY)
+//            make.trailing.equalTo(contentView.snp.trailing).offset(-10)
+//            make.width.height.equalTo(20)
+//        }
 
         backImageCard.layer.cornerRadius = 10
         backImageCard.clipsToBounds = true

@@ -23,12 +23,6 @@ class HomeViewController: BaseViewController {
             let addCard = UIHostingController(rootView: AddCardView(viewModel: AddCardViewModel(repository: BankCardRepositoryImpl(localService: LocalBankCardService(), remoteService: RemoteBankCardService()))))
             self?.navigationController?.pushViewController(addCard, animated: true)
         }
-        //        homeView.addNewTransaction = { [weak self] card in
-        //            let transactionVireModel = AddTransactionViewModel(selectedCard: card, repository: TransactionRepositoryImpl(localService: LocalTransactionService(), remoteService: RemoteTransactionService()))
-        //            AddTransactionView(viewModel: transactionVireModel) {
-        //                viewModel.addTransaction($0)
-        //            }
-        //        }
         let manager = CurrencyNetworkingManager()
         manager.obtainCoins { result in
             switch result {

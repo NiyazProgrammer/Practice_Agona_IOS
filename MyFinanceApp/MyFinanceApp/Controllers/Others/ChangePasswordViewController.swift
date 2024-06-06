@@ -33,10 +33,6 @@ class ChangePasswordViewController: BaseViewController {
 
 extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        MARK: Не завершенная реализация
-//        for card in changePasswordView.dataCardsSV.arrangedSubviews {
-//            (card as? ChangePasswordCard)?.dataTextField.resignFirstResponder()
-//        }
         return true
     }
 }

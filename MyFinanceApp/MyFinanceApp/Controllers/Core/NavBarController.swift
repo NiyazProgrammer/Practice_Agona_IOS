@@ -17,8 +17,5 @@ final class NavBarController: UINavigationController {
             .foregroundColor: UIColor(.black),
             .font: Resources.Fonts.helveticaRegular(with: 17)
         ]
-
-//        MARK: Пока не нужно
-//        navigationBar.addBottomBorder(with: Resources.Colors.separator, height: 1)
     }
 }

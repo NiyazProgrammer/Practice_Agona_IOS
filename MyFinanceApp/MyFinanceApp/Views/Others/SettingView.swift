@@ -8,9 +8,7 @@ private enum NumberSecurityCard {
 }
 
 protocol SettingViewDelegate: AnyObject {
-    func didPressAppsPasswordCard()
     func didPressChangePasswordCard()
-    func didPressPushNotificationCard()
 }
 
 protocol SettingViewForButtonDelegate: AnyObject {
@@ -148,32 +146,14 @@ class SettingView: UIView {
     }
 
     private func createAllCards() {
-//        MARK: Временно убрал так как еще не реализовал функционал
-//        createCard(
-//            numbersCard: NumberSecurityCard.appsPassword,
-//            withTapHandler: #selector(handleAppsPasswordCardTap(_:))
-//        )
         createCard(
             numbersCard: NumberSecurityCard.changePasword,
             withTapHandler: #selector(handleChangePasswordCardTap(_:))
         )
-//        MARK: Временно убрал так как еще не реализовал функционал
-//        createCard(
-//            numbersCard: NumberSecurityCard.pushNotification,
-//            withTapHandler: #selector(handlePushNotificationCardTap(_:))
-//        )
-    }
-
-    @objc private func handleAppsPasswordCardTap(_ sender: UITapGestureRecognizer) {
-        delegate?.didPressAppsPasswordCard()
     }
 
     @objc private func handleChangePasswordCardTap(_ sender: UITapGestureRecognizer) {
         delegate?.didPressChangePasswordCard()
-    }
-
-    @objc private func handlePushNotificationCardTap(_ sender: UITapGestureRecognizer) {
-        delegate?.didPressPushNotificationCard()
     }
 
     func configure(user: User) {
